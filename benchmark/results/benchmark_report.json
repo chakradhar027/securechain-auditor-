@@ -1,0 +1,615 @@
+{
+  "total_contracts": 60,
+  "true_positives": 50,
+  "true_negatives": 10,
+  "false_positives": 0,
+  "false_negatives": 0,
+  "metrics": {
+    "accuracy": 100.0,
+    "precision": 100.0,
+    "recall": 100.0,
+    "f1_score": 100.0
+  },
+  "contracts_evaluated": [
+    {
+      "contract": "Benchmark_Reentrancy_01",
+      "category": "REENTRANCY",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 100.0,
+      "findings_count": 4
+    },
+    {
+      "contract": "Benchmark_Reentrancy_02",
+      "category": "REENTRANCY",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 100.0,
+      "findings_count": 4
+    },
+    {
+      "contract": "Benchmark_Reentrancy_03",
+      "category": "REENTRANCY",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 100.0,
+      "findings_count": 4
+    },
+    {
+      "contract": "Benchmark_Reentrancy_04",
+      "category": "REENTRANCY",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 100.0,
+      "findings_count": 4
+    },
+    {
+      "contract": "Benchmark_Reentrancy_05",
+      "category": "REENTRANCY",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 100.0,
+      "findings_count": 4
+    },
+    {
+      "contract": "Benchmark_Reentrancy_06",
+      "category": "REENTRANCY",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 100.0,
+      "findings_count": 4
+    },
+    {
+      "contract": "Benchmark_Reentrancy_07",
+      "category": "REENTRANCY",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 100.0,
+      "findings_count": 4
+    },
+    {
+      "contract": "Benchmark_Reentrancy_08",
+      "category": "REENTRANCY",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 100.0,
+      "findings_count": 4
+    },
+    {
+      "contract": "Benchmark_Reentrancy_09",
+      "category": "REENTRANCY",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 100.0,
+      "findings_count": 4
+    },
+    {
+      "contract": "Benchmark_Reentrancy_10",
+      "category": "REENTRANCY",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 100.0,
+      "findings_count": 4
+    },
+    {
+      "contract": "Benchmark_Reentrancy_11",
+      "category": "REENTRANCY",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 100.0,
+      "findings_count": 4
+    },
+    {
+      "contract": "Benchmark_Reentrancy_12",
+      "category": "REENTRANCY",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 100.0,
+      "findings_count": 4
+    },
+    {
+      "contract": "Benchmark_Reentrancy_13",
+      "category": "REENTRANCY",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 100.0,
+      "findings_count": 4
+    },
+    {
+      "contract": "Benchmark_Reentrancy_14",
+      "category": "REENTRANCY",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 100.0,
+      "findings_count": 4
+    },
+    {
+      "contract": "Benchmark_Reentrancy_15",
+      "category": "REENTRANCY",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 100.0,
+      "findings_count": 4
+    },
+    {
+      "contract": "Benchmark_AccessControl_01",
+      "category": "ACCESS_CONTROL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_AccessControl_02",
+      "category": "ACCESS_CONTROL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_AccessControl_03",
+      "category": "ACCESS_CONTROL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_AccessControl_04",
+      "category": "ACCESS_CONTROL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_AccessControl_05",
+      "category": "ACCESS_CONTROL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_AccessControl_06",
+      "category": "ACCESS_CONTROL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_AccessControl_07",
+      "category": "ACCESS_CONTROL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_AccessControl_08",
+      "category": "ACCESS_CONTROL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_AccessControl_09",
+      "category": "ACCESS_CONTROL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_AccessControl_10",
+      "category": "ACCESS_CONTROL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_AccessControl_11",
+      "category": "ACCESS_CONTROL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_AccessControl_12",
+      "category": "ACCESS_CONTROL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_AccessControl_13",
+      "category": "ACCESS_CONTROL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_AccessControl_14",
+      "category": "ACCESS_CONTROL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_AccessControl_15",
+      "category": "ACCESS_CONTROL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_UncheckedCall_01",
+      "category": "UNCHECKED_CALL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "HIGH",
+      "risk_score": 55.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_UncheckedCall_02",
+      "category": "UNCHECKED_CALL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "HIGH",
+      "risk_score": 55.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_UncheckedCall_03",
+      "category": "UNCHECKED_CALL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "HIGH",
+      "risk_score": 55.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_UncheckedCall_04",
+      "category": "UNCHECKED_CALL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "HIGH",
+      "risk_score": 55.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_UncheckedCall_05",
+      "category": "UNCHECKED_CALL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "HIGH",
+      "risk_score": 55.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_UncheckedCall_06",
+      "category": "UNCHECKED_CALL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "HIGH",
+      "risk_score": 55.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_UncheckedCall_07",
+      "category": "UNCHECKED_CALL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "HIGH",
+      "risk_score": 55.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_UncheckedCall_08",
+      "category": "UNCHECKED_CALL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "HIGH",
+      "risk_score": 55.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_UncheckedCall_09",
+      "category": "UNCHECKED_CALL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "HIGH",
+      "risk_score": 55.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_UncheckedCall_10",
+      "category": "UNCHECKED_CALL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "HIGH",
+      "risk_score": 55.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "Benchmark_Oracle_01",
+      "category": "ORACLE_MANIPULATION",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 2
+    },
+    {
+      "contract": "Benchmark_Oracle_02",
+      "category": "ORACLE_MANIPULATION",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 2
+    },
+    {
+      "contract": "Benchmark_Oracle_03",
+      "category": "ORACLE_MANIPULATION",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 2
+    },
+    {
+      "contract": "Benchmark_Oracle_04",
+      "category": "ORACLE_MANIPULATION",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 2
+    },
+    {
+      "contract": "Benchmark_Oracle_05",
+      "category": "ORACLE_MANIPULATION",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 2
+    },
+    {
+      "contract": "Benchmark_Oracle_06",
+      "category": "ORACLE_MANIPULATION",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 2
+    },
+    {
+      "contract": "Benchmark_Oracle_07",
+      "category": "ORACLE_MANIPULATION",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 2
+    },
+    {
+      "contract": "Benchmark_Oracle_08",
+      "category": "ORACLE_MANIPULATION",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 2
+    },
+    {
+      "contract": "Benchmark_Oracle_09",
+      "category": "ORACLE_MANIPULATION",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 2
+    },
+    {
+      "contract": "Benchmark_Oracle_10",
+      "category": "ORACLE_MANIPULATION",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 2
+    },
+    {
+      "contract": "Benchmark_Secure_01",
+      "category": "SECURE",
+      "expected_vulnerable": false,
+      "detected_vulnerable": false,
+      "classification": "TRUE_NEGATIVE",
+      "risk_level": "LOW",
+      "risk_score": 5.0,
+      "findings_count": 1
+    },
+    {
+      "contract": "Benchmark_Secure_02",
+      "category": "SECURE",
+      "expected_vulnerable": false,
+      "detected_vulnerable": false,
+      "classification": "TRUE_NEGATIVE",
+      "risk_level": "LOW",
+      "risk_score": 5.0,
+      "findings_count": 1
+    },
+    {
+      "contract": "Benchmark_Secure_03",
+      "category": "SECURE",
+      "expected_vulnerable": false,
+      "detected_vulnerable": false,
+      "classification": "TRUE_NEGATIVE",
+      "risk_level": "LOW",
+      "risk_score": 5.0,
+      "findings_count": 1
+    },
+    {
+      "contract": "Benchmark_Secure_04",
+      "category": "SECURE",
+      "expected_vulnerable": false,
+      "detected_vulnerable": false,
+      "classification": "TRUE_NEGATIVE",
+      "risk_level": "LOW",
+      "risk_score": 5.0,
+      "findings_count": 1
+    },
+    {
+      "contract": "Benchmark_Secure_05",
+      "category": "SECURE",
+      "expected_vulnerable": false,
+      "detected_vulnerable": false,
+      "classification": "TRUE_NEGATIVE",
+      "risk_level": "LOW",
+      "risk_score": 5.0,
+      "findings_count": 1
+    },
+    {
+      "contract": "Benchmark_Secure_06",
+      "category": "SECURE",
+      "expected_vulnerable": false,
+      "detected_vulnerable": false,
+      "classification": "TRUE_NEGATIVE",
+      "risk_level": "LOW",
+      "risk_score": 5.0,
+      "findings_count": 1
+    },
+    {
+      "contract": "Benchmark_Secure_07",
+      "category": "SECURE",
+      "expected_vulnerable": false,
+      "detected_vulnerable": false,
+      "classification": "TRUE_NEGATIVE",
+      "risk_level": "LOW",
+      "risk_score": 5.0,
+      "findings_count": 1
+    },
+    {
+      "contract": "Benchmark_Secure_08",
+      "category": "SECURE",
+      "expected_vulnerable": false,
+      "detected_vulnerable": false,
+      "classification": "TRUE_NEGATIVE",
+      "risk_level": "LOW",
+      "risk_score": 5.0,
+      "findings_count": 1
+    },
+    {
+      "contract": "Benchmark_Secure_09",
+      "category": "SECURE",
+      "expected_vulnerable": false,
+      "detected_vulnerable": false,
+      "classification": "TRUE_NEGATIVE",
+      "risk_level": "LOW",
+      "risk_score": 5.0,
+      "findings_count": 1
+    },
+    {
+      "contract": "Benchmark_Secure_10",
+      "category": "SECURE",
+      "expected_vulnerable": false,
+      "detected_vulnerable": false,
+      "classification": "TRUE_NEGATIVE",
+      "risk_level": "LOW",
+      "risk_score": 5.0,
+      "findings_count": 1
+    }
+  ]
+}
