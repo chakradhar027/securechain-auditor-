@@ -1,4 +1,11 @@
-[README.md](https://github.com/user-attachments/files/34475074/README.md)
+<p align="center">
+  <img
+    src="https://github.com/user-attachments/assets/a70e9854-089f-4a99-ade7-52dc219365a6"
+    width="100%"
+    alt="SecureChain Auditor">
+</p>
+
+
 # SecureChain Auditor
 
 **Intelligent Multi-Engine Smart Contract Vulnerability Detection & Risk Assessment Platform**
