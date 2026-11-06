@@ -1,4 +1,4 @@
-[README.md](https://github.com/user-attachments/files/34474905/README.md)
+[README.md](https://github.com/user-attachments/files/34475074/README.md)
 # SecureChain Auditor
 
 **Intelligent Multi-Engine Smart Contract Vulnerability Detection & Risk Assessment Platform**
@@ -19,19 +19,19 @@ SecureChain Auditor is a web-based security auditing platform for Solidity smart
 ## Screenshots
 
 ### Security overview dashboard
-![SecureChain Auditor dashboard](screenshots/dashboard.png)
+![SecureChain Auditor dashboard](https://github.com/user-attachments/assets/ab5962b1-2e9b-43a4-99a3-9fcbed8737f9)
 
 ### Multi-engine contract scanner
-![Contract scanner](screenshots/scanner.png)
+![Contract scanner](https://github.com/user-attachments/assets/f0810d4b-ebc6-46a1-af1d-700788ca253c)
 
 ### Vulnerability findings catalog
-![Vulnerability findings catalog](screenshots/findings-catalog.png)
+![Vulnerability findings catalog](https://github.com/user-attachments/assets/15662aca-c739-4fcc-b54b-58840c5d4653)
 
 ### Audit history and comparisons
-![Audit history](screenshots/scan-history.png)
+![Audit history](https://github.com/user-attachments/assets/7150623d-97ca-4e2f-b552-8f94df12b311)
 
 ### Foundry invariant fuzz testing
-![Foundry fuzz testing](screenshots/foundry-fuzz-testing.png)
+![Foundry fuzz testing](https://github.com/user-attachments/assets/37017b35-1798-4c92-9f3c-f83d90fa659d)
 
 ## Key capabilities
 
