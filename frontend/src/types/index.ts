@@ -58,8 +58,10 @@ export interface FuzzDetails {
 export interface Scan {
   id: number;
   contract_id: number;
+  contract_name?: string;
   status: 'PENDING' | 'RUNNING' | 'COMPLETED' | 'FAILED';
   engines_used: string[];
+  engines_requested?: string[];
   risk_score: number;
   risk_level: SeverityLevel;
   total_vulnerabilities: number;
@@ -94,3 +96,4 @@ export interface EngineInfo {
   capabilities: string[];
   status: string;
 }
+

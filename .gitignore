@@ -37,27 +37,47 @@ frontend/dist-ssr/
 
 # Environment variables & secrets
 .env
-.env.production
+.env.*
+!.env.example
 *.pem
 *.key
 
-# Database
+# Database & Backups
 *.db
 *.sqlite
 *.sqlite3
+*.db-journal
+*.db-wal
+backend/storage/*.db*
+storage/*.db*
+backend/storage/backups/*
+!backend/storage/backups/.gitkeep
+storage/backups/*
+!storage/backups/.gitkeep
 
 # Storage & Temporary Files
+backend/storage/uploads/*
+!backend/storage/uploads/.gitkeep
+backend/storage/reports/*
+!backend/storage/reports/.gitkeep
+backend/storage/temp/*
+!backend/storage/temp/.gitkeep
 storage/uploads/*
 !storage/uploads/.gitkeep
 storage/reports/*
 !storage/reports/.gitkeep
 storage/temp/*
 !storage/temp/.gitkeep
+*.pdf
 
-# Foundry & Smart Contracts
+# Foundry & Smart Contracts build artifacts
 contracts/cache/
 contracts/out/
 contracts/broadcast/
+cache/
+out/
+broadcast/
+
 
 # IDE & OS
 .vscode/
@@ -66,3 +86,4 @@ contracts/broadcast/
 *.swo
 .DS_Store
 Thumbs.db
+

@@ -34,6 +34,7 @@ app.add_middleware(
 app.include_router(api_router)
 
 @app.get("/health")
+@app.get("/api/v1/health")
 async def health_check():
     return {
         "status": "healthy",
@@ -54,3 +55,4 @@ async def root():
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("app.main:app", host=settings.HOST, port=settings.PORT, reload=settings.DEBUG)
+

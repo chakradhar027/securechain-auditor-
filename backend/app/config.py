@@ -4,7 +4,12 @@ from typing import List, Union
 from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+# Canonical Base and Backend Paths (independent of CWD)
+BASE_DIR = Path(__file__).resolve().parent.parent.parent  # Repository Root
+BACKEND_DIR = Path(__file__).resolve().parent.parent      # Backend Root
+CANONICAL_STORAGE_DIR = BACKEND_DIR / "storage"
+CANONICAL_DATABASE_PATH = CANONICAL_STORAGE_DIR / "securechain.db"
+CANONICAL_DATABASE_URL = f"sqlite+aiosqlite:///{CANONICAL_DATABASE_PATH}"
 
 class Settings(BaseSettings):
     APP_NAME: str = "SecureChain Auditor"
@@ -13,8 +18,13 @@ class Settings(BaseSettings):
     PORT: int = 8000
     HOST: str = "0.0.0.0"
 
-    # Database
-    DATABASE_URL: str = f"sqlite+aiosqlite:///{BASE_DIR}/storage/securechain.db"
+    # Base and Backend Directories
+    BASE_DIR: Path = BASE_DIR
+    BACKEND_DIR: Path = BACKEND_DIR
+    CONTRACTS_DIR: str = str(BASE_DIR / "contracts")
+
+    # Database: Active Canonical Database in backend/storage/securechain.db
+    DATABASE_URL: str = CANONICAL_DATABASE_URL
 
     # CORS
     ALLOWED_ORIGINS: Union[List[str], str] = [
@@ -23,6 +33,55 @@ class Settings(BaseSettings):
         "http://localhost:3000",
         "http://127.0.0.1:3000",
     ]
+
+    @field_validator("DATABASE_URL", mode="after")
+    @classmethod
+    def resolve_database_url(cls, v: str) -> str:
+        # If empty, relative, or pointing to legacy root storage or relative sqlite URL
+        if not v or ("sqlite" in v and (
+            "///./storage" in v or 
+            "///./backend/storage" in v or 
+            "///storage" in v or 
+            not os.path.isabs(v.split("///")[-1]) or 
+            v.endswith("/Project SecureChain Auditor/storage/securechain.db")
+        )):
+            return CANONICAL_DATABASE_URL
+        return v
+
+    @field_validator("STORAGE_DIR", mode="after")
+    @classmethod
+    def resolve_storage_dir(cls, v: str) -> str:
+        if not v or v.startswith("./") or not os.path.isabs(v) or v.endswith("/Project SecureChain Auditor/storage"):
+            return str(CANONICAL_STORAGE_DIR)
+        return v
+
+    @field_validator("UPLOADS_DIR", mode="after")
+    @classmethod
+    def resolve_uploads_dir(cls, v: str) -> str:
+        if not v or v.startswith("./") or not os.path.isabs(v) or ("/storage/uploads" in v and "/backend/storage/uploads" not in v):
+            return str(CANONICAL_STORAGE_DIR / "uploads")
+        return v
+
+    @field_validator("REPORTS_DIR", mode="after")
+    @classmethod
+    def resolve_reports_dir(cls, v: str) -> str:
+        if not v or v.startswith("./") or not os.path.isabs(v) or ("/storage/reports" in v and "/backend/storage/reports" not in v):
+            return str(CANONICAL_STORAGE_DIR / "reports")
+        return v
+
+    @field_validator("TEMP_DIR", mode="after")
+    @classmethod
+    def resolve_temp_dir(cls, v: str) -> str:
+        if not v or v.startswith("./") or not os.path.isabs(v) or ("/storage/temp" in v and "/backend/storage/temp" not in v):
+            return str(CANONICAL_STORAGE_DIR / "temp")
+        return v
+
+    @field_validator("CONTRACTS_DIR", mode="after")
+    @classmethod
+    def resolve_contracts_dir(cls, v: str) -> str:
+        if not v or v.startswith("./") or not os.path.isabs(v):
+            return str(BASE_DIR / "contracts")
+        return v
 
     @field_validator("ALLOWED_ORIGINS", mode="before")
     @classmethod
@@ -42,17 +101,19 @@ class Settings(BaseSettings):
     # Security
     SECRET_KEY: str = "securechain-auditor-development-secret-key-2026"
 
-    # External Tools
-    SLITHER_PATH: str = "slither"
-    MYTHRIL_PATH: str = "myth"
-    FOUNDRY_FORGE_PATH: str = "forge"
+    # External Tools (prioritize local venv binaries if present)
+    VENV_BIN_DIR: str = str(BASE_DIR / ".venv" / "bin")
+    SLITHER_PATH: str = str(BASE_DIR / ".venv" / "bin" / "slither") if (BASE_DIR / ".venv" / "bin" / "slither").exists() else "slither"
+    MYTHRIL_PATH: str = str(BASE_DIR / ".venv" / "bin" / "myth") if (BASE_DIR / ".venv" / "bin" / "myth").exists() else "myth"
+    FOUNDRY_FORGE_PATH: str = str(BASE_DIR / ".venv" / "bin" / "forge") if (BASE_DIR / ".venv" / "bin" / "forge").exists() else "forge"
+    SOLC_PATH: str = str(BASE_DIR / ".venv" / "bin" / "solc") if (BASE_DIR / ".venv" / "bin" / "solc").exists() else "solc"
     SCANNER_TIMEOUT_SECONDS: int = 180
 
-    # Storage
-    STORAGE_DIR: str = str(BASE_DIR / "storage")
-    UPLOADS_DIR: str = str(BASE_DIR / "storage" / "uploads")
-    REPORTS_DIR: str = str(BASE_DIR / "storage" / "reports")
-    TEMP_DIR: str = str(BASE_DIR / "storage" / "temp")
+    # Storage Paths (Canonical active storage in backend/storage/)
+    STORAGE_DIR: str = str(CANONICAL_STORAGE_DIR)
+    UPLOADS_DIR: str = str(CANONICAL_STORAGE_DIR / "uploads")
+    REPORTS_DIR: str = str(CANONICAL_STORAGE_DIR / "reports")
+    TEMP_DIR: str = str(CANONICAL_STORAGE_DIR / "temp")
 
     # Blockchain Explorers
     ETHERSCAN_API_KEY: str = ""

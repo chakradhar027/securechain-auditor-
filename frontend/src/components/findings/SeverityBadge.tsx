@@ -33,3 +33,4 @@ export const SeverityBadge: React.FC<Props> = ({ severity, size = 'md' }) => {
     </span>
   );
 };
+

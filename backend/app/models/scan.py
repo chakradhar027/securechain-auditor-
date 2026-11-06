@@ -10,6 +10,7 @@ class Scan(Base):
     contract_id = Column(Integer, ForeignKey("contracts.id", ondelete="CASCADE"), nullable=False, index=True)
     status = Column(String(32), default="PENDING", nullable=False) # PENDING, RUNNING, COMPLETED, FAILED
     engines_used = Column(JSON, default=list, nullable=False) # ["slither", "mythril", "custom", "foundry"]
+    engines_requested = Column(JSON, default=list, nullable=True)
     
     # Risk Metrics
     risk_score = Column(Float, default=0.0, nullable=False) # 0.0 - 100.0
@@ -37,3 +38,17 @@ class Scan(Base):
 
     contract = relationship("Contract", back_populates="scans")
     findings = relationship("Finding", back_populates="scan", cascade="all, delete-orphan")
+
+    @property
+    def contract_name(self) -> str:
+        if "contract" in self.__dict__ and self.contract is not None:
+            if not self.contract.name or self.contract.name.lower() in ["smartcontract", "unknown", "adopting"]:
+                import os
+                from app.utils.file_validator import extract_contract_name
+                stem = os.path.splitext(os.path.basename(self.contract.filename or ""))[0]
+                if self.contract.source_code:
+                    return extract_contract_name(self.contract.source_code, default=stem or "Contract", filename=self.contract.filename)
+                return stem or f"Contract #{self.contract_id}"
+            return self.contract.name
+        return f"Contract #{self.contract_id}"
+

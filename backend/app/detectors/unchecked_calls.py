@@ -99,3 +99,4 @@ class UncheckedCallsDetector(BaseDetector):
                         ))
 
         return findings
+

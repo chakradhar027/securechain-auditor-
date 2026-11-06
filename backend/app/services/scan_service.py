@@ -1,3 +1,4 @@
+import os
 import asyncio
 from datetime import datetime, timezone
 from typing import List, Dict, Any, Optional
@@ -11,7 +12,8 @@ from app.models.finding import Finding
 from app.scanners.scanner_manager import ScannerManager
 from app.analysis.correlation import FindingCorrelator
 from app.analysis.risk_engine import RiskEngine
-from app.analysis.recommendations import get_recommendation_for_finding
+from app.analysis.recommendations import get_recommendation_for_finding, inspect_call_safety
+from app.utils.file_validator import extract_contract_name
 from app.reports.pdf_generator import PDFGenerator
 from app.services.job_service import job_service
 from app.utils.logger import logger
@@ -39,6 +41,7 @@ class ScanService:
         scan = Scan(
             contract_id=contract.id,
             status="RUNNING",
+            engines_requested=engines,
             engines_used=engines,
             started_at=datetime.now(timezone.utc)
         )
@@ -51,22 +54,43 @@ class ScanService:
         try:
             # 3. Execute scanners
             job_service.update_progress(scan.id, 25, "Running multi-engine security scanners...")
+            actual_file_path = contract.file_path
+            if not os.path.isabs(actual_file_path):
+                canonical_fp = os.path.join(settings.UPLOADS_DIR, os.path.basename(actual_file_path))
+                if os.path.exists(canonical_fp):
+                    actual_file_path = canonical_fp
+
             raw_findings, fuzz_meta = await self.scanner_manager.run_scanners(
-                file_path=contract.file_path,
+                file_path=actual_file_path,
                 source_code=contract.source_code,
                 enabled_engines=engines
             )
+            executed_engines = getattr(self.scanner_manager, "last_executed_engines", None)
+            if not executed_engines:
+                from app.utils.process_runner import is_mythril_operational
+                executed_engines = [e for e in engines if e != "mythril" or is_mythril_operational()]
 
             # 4. Correlation & Deduplication
             job_service.update_progress(scan.id, 60, "Correlating multi-engine findings and deduplicating...")
             consolidated = FindingCorrelator.correlate(raw_findings)
 
-            # 5. Enrich with actionable recommendations
+            # 5. Enrich with actionable recommendations and context-aware inspection
+            source_code = contract.source_code or ""
             for f in consolidated:
                 f["recommendation"] = get_recommendation_for_finding(
-                    f["category"],
-                    f.get("recommendation", "Review and remediate highlighted code.")
+                    f,
+                    source_code=source_code
                 )
+                # For low-level calls, if verified safe, explicitly document static inspection verification
+                if f.get("severity") == "INFORMATIONAL" and ("low level call" in f.get("title", "").lower() or "low-level-call" in f.get("title", "").lower()):
+                    safety = inspect_call_safety(source_code, f.get("line_start"), f.get("code_snippet", ""))
+                    if safety["is_safe"] and "Static Inspection Verification" not in f["description"]:
+                        f["description"] += (
+                            "\n\n[Static Inspection Verification]: Verified safe implementation. The return boolean "
+                            "status is explicitly checked with require(), and reentrancy protection (nonReentrant modifier "
+                            "and Checks-Effects-Interactions pattern) is actively enforced. This finding is informational "
+                            "advisory guidance and does not represent an exploitable vulnerability."
+                        )
 
             # 6. Calculate overall Risk Metrics
             job_service.update_progress(scan.id, 75, "Evaluating risk metrics and vulnerability density...")
@@ -74,17 +98,29 @@ class ScanService:
 
             # 7. Generate PDF Audit Report
             job_service.update_progress(scan.id, 85, "Compiling PDF audit report with ReportLab...")
+            
+            # Resolve accurate contract name, falling back to uploaded filename stem without .sol
+            resolved_contract_name = contract.name
+            filename_stem = os.path.splitext(os.path.basename(contract.filename or ""))[0]
+            if not resolved_contract_name or resolved_contract_name.lower() in ["adopting", "smartcontract", "unknown"]:
+                if contract.source_code:
+                    resolved_contract_name = extract_contract_name(contract.source_code, default=filename_stem or "Contract", filename=contract.filename)
+                elif filename_stem:
+                    resolved_contract_name = filename_stem
+
             contract_dict = {
-                "name": contract.name,
+                "name": resolved_contract_name,
                 "filename": contract.filename,
                 "compiler_version": contract.compiler_version,
                 "address": contract.address,
-                "network": contract.network
+                "network": contract.network,
+                "source_code": contract.source_code
             }
             scan_dict = {
                 "risk_score": risk_score,
                 "risk_level": risk_level,
-                "engines_used": engines,
+                "engines_used": executed_engines,
+                "engines_requested": engines,
                 "total_vulnerabilities": len(consolidated),
                 "critical_count": severity_counts["CRITICAL"],
                 "high_count": severity_counts["HIGH"],
@@ -126,6 +162,8 @@ class ScanService:
 
             # 9. Update Scan record
             scan.status = "COMPLETED"
+            scan.engines_used = executed_engines
+            scan.engines_requested = engines
             scan.risk_score = risk_score
             scan.risk_level = risk_level
             scan.total_vulnerabilities = len(consolidated)
@@ -155,3 +193,4 @@ class ScanService:
             await db.commit()
             job_service.fail_job(scan.id, str(e))
             raise e
+

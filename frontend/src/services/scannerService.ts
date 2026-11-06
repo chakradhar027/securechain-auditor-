@@ -59,3 +59,4 @@ export const scannerService = {
     return request<EngineInfo[]>('/scanner/engines');
   },
 };
+

@@ -52,3 +52,4 @@ contract ReentrancyFixed is ReentrancyGuard {
         return address(this).balance;
     }
 }
+

@@ -20,7 +20,6 @@ class FindingCorrelator:
                     matched = True
                     break
             if not matched:
-                # Add copy to consolidated list
                 item_copy = dict(item)
                 item_copy["engines_corroborating"] = [item["engine"]]
                 consolidated.append(item_copy)
@@ -31,7 +30,9 @@ class FindingCorrelator:
             if len(engines) > 1:
                 item["engine"] = f"consolidated ({', '.join(sorted(engines))})"
                 item["confidence"] = "HIGH"
-                item["title"] = f"[Multi-Engine] {item['title'].replace('Slither: ', '').replace('Mythril: ', '')}"
+                cleaned_title = item['title'].replace('Slither: ', '').replace('Mythril: ', '')
+                if not cleaned_title.startswith("[Multi-Engine]"):
+                    item["title"] = f"[Multi-Engine] {cleaned_title}"
 
         return consolidated
 
@@ -41,6 +42,23 @@ class FindingCorrelator:
         if f1["category"] != f2["category"]:
             return False
 
+        # An INFORMATIONAL finding must NEVER be merged into an active vulnerability
+        is_info1 = (f1.get("severity", "").upper() == "INFORMATIONAL")
+        is_info2 = (f2.get("severity", "").upper() == "INFORMATIONAL")
+        if is_info1 != is_info2:
+            return False
+
+        # Findings from the same engine with different titles are distinct checks, not duplicates
+        if f1.get("engine") == f2.get("engine") and f1.get("title") != f2.get("title"):
+            return False
+
+        t1 = f1["title"].lower().replace("slither: ", "").replace("mythril: ", "").replace("[multi-engine] ", "")
+        t2 = f2["title"].lower().replace("slither: ", "").replace("mythril: ", "").replace("[multi-engine] ", "")
+
+        # For OTHER category, require title keyword overlap
+        if f1["category"] == "OTHER":
+            return t1 in t2 or t2 in t1
+
         # If both have line numbers, check proximity within 4 lines
         l1 = f1.get("line_start")
         l2 = f2.get("line_start")
@@ -49,8 +67,6 @@ class FindingCorrelator:
                 return True
 
         # Check title similarity
-        t1 = f1["title"].lower().replace("slither: ", "").replace("mythril: ", "")
-        t2 = f2["title"].lower().replace("slither: ", "").replace("mythril: ", "")
         if t1 in t2 or t2 in t1:
             return True
 
@@ -73,6 +89,11 @@ class FindingCorrelator:
         if not target.get("code_snippet") and incoming.get("code_snippet"):
             target["code_snippet"] = incoming["code_snippet"]
 
-        # Append additional detail if informative
-        if incoming["description"] not in target["description"]:
-            target["description"] += f"\n[Corroboration from {incoming['engine']}]: {incoming['description']}"
+        # Clean incoming description: strip trailing Exploitability Assessment tag so it doesn't pollute the target
+        import re
+        cleaned_incoming_desc = re.sub(r"\n*\[Exploitability Assessment\]:[^\n]*(\n[^\n]*)*$", "", incoming["description"]).strip()
+        if cleaned_incoming_desc and cleaned_incoming_desc not in target["description"]:
+            if incoming["engine"] != target["engine"]:
+                target["description"] += f"\n[Corroboration from {incoming['engine']}]: {cleaned_incoming_desc}"
+            else:
+                target["description"] += f"\n{cleaned_incoming_desc}"

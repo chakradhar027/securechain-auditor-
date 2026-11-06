@@ -30,3 +30,4 @@ async def list_findings(
     query = query.order_by(Finding.id.asc()).offset(skip).limit(limit)
     res = await db.execute(query)
     return res.scalars().all()
+

@@ -3,360 +3,516 @@
     "filename": "Benchmark_Reentrancy_01.sol",
     "category": "REENTRANCY",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Reentrancy_02": {
     "filename": "Benchmark_Reentrancy_02.sol",
     "category": "REENTRANCY",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Reentrancy_03": {
     "filename": "Benchmark_Reentrancy_03.sol",
     "category": "REENTRANCY",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Reentrancy_04": {
     "filename": "Benchmark_Reentrancy_04.sol",
     "category": "REENTRANCY",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Reentrancy_05": {
     "filename": "Benchmark_Reentrancy_05.sol",
     "category": "REENTRANCY",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Reentrancy_06": {
     "filename": "Benchmark_Reentrancy_06.sol",
     "category": "REENTRANCY",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Reentrancy_07": {
     "filename": "Benchmark_Reentrancy_07.sol",
     "category": "REENTRANCY",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Reentrancy_08": {
     "filename": "Benchmark_Reentrancy_08.sol",
     "category": "REENTRANCY",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Reentrancy_09": {
     "filename": "Benchmark_Reentrancy_09.sol",
     "category": "REENTRANCY",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Reentrancy_10": {
     "filename": "Benchmark_Reentrancy_10.sol",
     "category": "REENTRANCY",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Reentrancy_11": {
     "filename": "Benchmark_Reentrancy_11.sol",
     "category": "REENTRANCY",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Reentrancy_12": {
     "filename": "Benchmark_Reentrancy_12.sol",
     "category": "REENTRANCY",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Reentrancy_13": {
     "filename": "Benchmark_Reentrancy_13.sol",
     "category": "REENTRANCY",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Reentrancy_14": {
     "filename": "Benchmark_Reentrancy_14.sol",
     "category": "REENTRANCY",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Reentrancy_15": {
     "filename": "Benchmark_Reentrancy_15.sol",
     "category": "REENTRANCY",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_AccessControl_01": {
     "filename": "Benchmark_AccessControl_01.sol",
     "category": "ACCESS_CONTROL",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_AccessControl_02": {
     "filename": "Benchmark_AccessControl_02.sol",
     "category": "ACCESS_CONTROL",
     "has_vulnerability": true,
-    "expected_severity": "HIGH"
+    "expected_severity": "HIGH",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_AccessControl_03": {
     "filename": "Benchmark_AccessControl_03.sol",
     "category": "ACCESS_CONTROL",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_AccessControl_04": {
     "filename": "Benchmark_AccessControl_04.sol",
     "category": "ACCESS_CONTROL",
     "has_vulnerability": true,
-    "expected_severity": "HIGH"
+    "expected_severity": "HIGH",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_AccessControl_05": {
     "filename": "Benchmark_AccessControl_05.sol",
     "category": "ACCESS_CONTROL",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_AccessControl_06": {
     "filename": "Benchmark_AccessControl_06.sol",
     "category": "ACCESS_CONTROL",
     "has_vulnerability": true,
-    "expected_severity": "HIGH"
+    "expected_severity": "HIGH",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_AccessControl_07": {
     "filename": "Benchmark_AccessControl_07.sol",
     "category": "ACCESS_CONTROL",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_AccessControl_08": {
     "filename": "Benchmark_AccessControl_08.sol",
     "category": "ACCESS_CONTROL",
     "has_vulnerability": true,
-    "expected_severity": "HIGH"
+    "expected_severity": "HIGH",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_AccessControl_09": {
     "filename": "Benchmark_AccessControl_09.sol",
     "category": "ACCESS_CONTROL",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_AccessControl_10": {
     "filename": "Benchmark_AccessControl_10.sol",
     "category": "ACCESS_CONTROL",
     "has_vulnerability": true,
-    "expected_severity": "HIGH"
+    "expected_severity": "HIGH",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_AccessControl_11": {
     "filename": "Benchmark_AccessControl_11.sol",
     "category": "ACCESS_CONTROL",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_AccessControl_12": {
     "filename": "Benchmark_AccessControl_12.sol",
     "category": "ACCESS_CONTROL",
     "has_vulnerability": true,
-    "expected_severity": "HIGH"
+    "expected_severity": "HIGH",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_AccessControl_13": {
     "filename": "Benchmark_AccessControl_13.sol",
     "category": "ACCESS_CONTROL",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_AccessControl_14": {
     "filename": "Benchmark_AccessControl_14.sol",
     "category": "ACCESS_CONTROL",
     "has_vulnerability": true,
-    "expected_severity": "HIGH"
+    "expected_severity": "HIGH",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_AccessControl_15": {
     "filename": "Benchmark_AccessControl_15.sol",
     "category": "ACCESS_CONTROL",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_UncheckedCall_01": {
     "filename": "Benchmark_UncheckedCall_01.sol",
     "category": "UNCHECKED_CALL",
     "has_vulnerability": true,
-    "expected_severity": "HIGH"
+    "expected_severity": "HIGH",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_UncheckedCall_02": {
     "filename": "Benchmark_UncheckedCall_02.sol",
     "category": "UNCHECKED_CALL",
     "has_vulnerability": true,
-    "expected_severity": "HIGH"
+    "expected_severity": "HIGH",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_UncheckedCall_03": {
     "filename": "Benchmark_UncheckedCall_03.sol",
     "category": "UNCHECKED_CALL",
     "has_vulnerability": true,
-    "expected_severity": "HIGH"
+    "expected_severity": "HIGH",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_UncheckedCall_04": {
     "filename": "Benchmark_UncheckedCall_04.sol",
     "category": "UNCHECKED_CALL",
     "has_vulnerability": true,
-    "expected_severity": "HIGH"
+    "expected_severity": "HIGH",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_UncheckedCall_05": {
     "filename": "Benchmark_UncheckedCall_05.sol",
     "category": "UNCHECKED_CALL",
     "has_vulnerability": true,
-    "expected_severity": "HIGH"
+    "expected_severity": "HIGH",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_UncheckedCall_06": {
     "filename": "Benchmark_UncheckedCall_06.sol",
     "category": "UNCHECKED_CALL",
     "has_vulnerability": true,
-    "expected_severity": "HIGH"
+    "expected_severity": "HIGH",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_UncheckedCall_07": {
     "filename": "Benchmark_UncheckedCall_07.sol",
     "category": "UNCHECKED_CALL",
     "has_vulnerability": true,
-    "expected_severity": "HIGH"
+    "expected_severity": "HIGH",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_UncheckedCall_08": {
     "filename": "Benchmark_UncheckedCall_08.sol",
     "category": "UNCHECKED_CALL",
     "has_vulnerability": true,
-    "expected_severity": "HIGH"
+    "expected_severity": "HIGH",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_UncheckedCall_09": {
     "filename": "Benchmark_UncheckedCall_09.sol",
     "category": "UNCHECKED_CALL",
     "has_vulnerability": true,
-    "expected_severity": "HIGH"
+    "expected_severity": "HIGH",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_UncheckedCall_10": {
     "filename": "Benchmark_UncheckedCall_10.sol",
     "category": "UNCHECKED_CALL",
     "has_vulnerability": true,
-    "expected_severity": "HIGH"
+    "expected_severity": "HIGH",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Oracle_01": {
     "filename": "Benchmark_Oracle_01.sol",
     "category": "ORACLE_MANIPULATION",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Oracle_02": {
     "filename": "Benchmark_Oracle_02.sol",
     "category": "ORACLE_MANIPULATION",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Oracle_03": {
     "filename": "Benchmark_Oracle_03.sol",
     "category": "ORACLE_MANIPULATION",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Oracle_04": {
     "filename": "Benchmark_Oracle_04.sol",
     "category": "ORACLE_MANIPULATION",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Oracle_05": {
     "filename": "Benchmark_Oracle_05.sol",
     "category": "ORACLE_MANIPULATION",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Oracle_06": {
     "filename": "Benchmark_Oracle_06.sol",
     "category": "ORACLE_MANIPULATION",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Oracle_07": {
     "filename": "Benchmark_Oracle_07.sol",
     "category": "ORACLE_MANIPULATION",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Oracle_08": {
     "filename": "Benchmark_Oracle_08.sol",
     "category": "ORACLE_MANIPULATION",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Oracle_09": {
     "filename": "Benchmark_Oracle_09.sol",
     "category": "ORACLE_MANIPULATION",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Oracle_10": {
     "filename": "Benchmark_Oracle_10.sol",
     "category": "ORACLE_MANIPULATION",
     "has_vulnerability": true,
-    "expected_severity": "CRITICAL"
+    "expected_severity": "CRITICAL",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Secure_01": {
     "filename": "Benchmark_Secure_01.sol",
     "category": "SECURE",
     "has_vulnerability": false,
-    "expected_severity": "SECURE"
+    "expected_severity": "SECURE",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Secure_02": {
     "filename": "Benchmark_Secure_02.sol",
     "category": "SECURE",
     "has_vulnerability": false,
-    "expected_severity": "SECURE"
+    "expected_severity": "SECURE",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Secure_03": {
     "filename": "Benchmark_Secure_03.sol",
     "category": "SECURE",
     "has_vulnerability": false,
-    "expected_severity": "SECURE"
+    "expected_severity": "SECURE",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Secure_04": {
     "filename": "Benchmark_Secure_04.sol",
     "category": "SECURE",
     "has_vulnerability": false,
-    "expected_severity": "SECURE"
+    "expected_severity": "SECURE",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Secure_05": {
     "filename": "Benchmark_Secure_05.sol",
     "category": "SECURE",
     "has_vulnerability": false,
-    "expected_severity": "SECURE"
+    "expected_severity": "SECURE",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Secure_06": {
     "filename": "Benchmark_Secure_06.sol",
     "category": "SECURE",
     "has_vulnerability": false,
-    "expected_severity": "SECURE"
+    "expected_severity": "SECURE",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Secure_07": {
     "filename": "Benchmark_Secure_07.sol",
     "category": "SECURE",
     "has_vulnerability": false,
-    "expected_severity": "SECURE"
+    "expected_severity": "SECURE",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Secure_08": {
     "filename": "Benchmark_Secure_08.sol",
     "category": "SECURE",
     "has_vulnerability": false,
-    "expected_severity": "SECURE"
+    "expected_severity": "SECURE",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Secure_09": {
     "filename": "Benchmark_Secure_09.sol",
     "category": "SECURE",
     "has_vulnerability": false,
-    "expected_severity": "SECURE"
+    "expected_severity": "SECURE",
+    "dataset_type": "synthetic_template"
   },
   "Benchmark_Secure_10": {
     "filename": "Benchmark_Secure_10.sol",
     "category": "SECURE",
     "has_vulnerability": false,
-    "expected_severity": "SECURE"
+    "expected_severity": "SECURE",
+    "dataset_type": "synthetic_template"
+  },
+  "SWC107_SimpleDAO_Vulnerable": {
+    "filename": "SWC107_SimpleDAO_Vulnerable.sol",
+    "category": "REENTRANCY",
+    "has_vulnerability": true,
+    "expected_severity": "CRITICAL",
+    "dataset_type": "independent_swc",
+    "swc_id": "SWC-107"
+  },
+  "SWC107_SimpleDAO_Fixed": {
+    "filename": "SWC107_SimpleDAO_Fixed.sol",
+    "category": "SECURE_BASELINE",
+    "has_vulnerability": false,
+    "expected_severity": "SECURE",
+    "dataset_type": "independent_swc",
+    "swc_id": "SWC-107"
+  },
+  "SWC105_UnprotectedWithdraw_Vulnerable": {
+    "filename": "SWC105_UnprotectedWithdraw_Vulnerable.sol",
+    "category": "ACCESS_CONTROL",
+    "has_vulnerability": true,
+    "expected_severity": "CRITICAL",
+    "dataset_type": "independent_swc",
+    "swc_id": "SWC-105"
+  },
+  "SWC105_UnprotectedWithdraw_Fixed": {
+    "filename": "SWC105_UnprotectedWithdraw_Fixed.sol",
+    "category": "SECURE_BASELINE",
+    "has_vulnerability": false,
+    "expected_severity": "SECURE",
+    "dataset_type": "independent_swc",
+    "swc_id": "SWC-105"
+  },
+  "SWC115_TxOriginPhishing_Vulnerable": {
+    "filename": "SWC115_TxOriginPhishing_Vulnerable.sol",
+    "category": "ACCESS_CONTROL",
+    "has_vulnerability": true,
+    "expected_severity": "HIGH",
+    "dataset_type": "independent_swc",
+    "swc_id": "SWC-115"
+  },
+  "SWC115_TxOriginPhishing_Fixed": {
+    "filename": "SWC115_TxOriginPhishing_Fixed.sol",
+    "category": "SECURE_BASELINE",
+    "has_vulnerability": false,
+    "expected_severity": "SECURE",
+    "dataset_type": "independent_swc",
+    "swc_id": "SWC-115"
+  },
+  "SWC104_UncheckedSend_Vulnerable": {
+    "filename": "SWC104_UncheckedSend_Vulnerable.sol",
+    "category": "UNCHECKED_CALL",
+    "has_vulnerability": true,
+    "expected_severity": "MEDIUM",
+    "dataset_type": "independent_swc",
+    "swc_id": "SWC-104"
+  },
+  "SWC104_UncheckedSend_Fixed": {
+    "filename": "SWC104_UncheckedSend_Fixed.sol",
+    "category": "SECURE_BASELINE",
+    "has_vulnerability": false,
+    "expected_severity": "SECURE",
+    "dataset_type": "independent_swc",
+    "swc_id": "SWC-104"
+  },
+  "SWC106_UnprotectedSelfdestruct_Vulnerable": {
+    "filename": "SWC106_UnprotectedSelfdestruct_Vulnerable.sol",
+    "category": "ACCESS_CONTROL",
+    "has_vulnerability": true,
+    "expected_severity": "CRITICAL",
+    "dataset_type": "independent_swc",
+    "swc_id": "SWC-106"
+  },
+  "SWC106_UnprotectedSelfdestruct_Fixed": {
+    "filename": "SWC106_UnprotectedSelfdestruct_Fixed.sol",
+    "category": "SECURE_BASELINE",
+    "has_vulnerability": false,
+    "expected_severity": "SECURE",
+    "dataset_type": "independent_swc",
+    "swc_id": "SWC-106"
+  },
+  "RealWorld_PriceOracle_Vulnerable": {
+    "filename": "RealWorld_PriceOracle_Vulnerable.sol",
+    "category": "ORACLE_MANIPULATION",
+    "has_vulnerability": true,
+    "expected_severity": "CRITICAL",
+    "dataset_type": "independent_real_world",
+    "swc_id": "N/A"
+  },
+  "RealWorld_PriceOracle_Fixed": {
+    "filename": "RealWorld_PriceOracle_Fixed.sol",
+    "category": "SECURE_BASELINE",
+    "has_vulnerability": false,
+    "expected_severity": "SECURE",
+    "dataset_type": "independent_real_world",
+    "swc_id": "N/A"
   }
 }

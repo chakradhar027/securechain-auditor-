@@ -23,7 +23,8 @@ class UploadService:
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(content)
 
-        contract_name = extract_contract_name(content, default=os.path.splitext(clean_name)[0])
+        fallback_name = os.path.splitext(clean_name)[0]
+        contract_name = extract_contract_name(content, default=fallback_name, filename=clean_name)
         compiler_version = extract_compiler_version(content)
         byte_size = len(content.encode("utf-8"))
 
@@ -37,3 +38,4 @@ class UploadService:
         }
 
         return True, "Solidity contract saved successfully.", metadata
+

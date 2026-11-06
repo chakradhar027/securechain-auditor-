@@ -3,7 +3,7 @@ src = "vulnerable"
 test = "test"
 out = "out"
 libs = ["lib"]
-solc_version = "0.8.20"
+solc = "../.venv/bin/solc"
 optimizer = true
 optimizer_runs = 200
 

@@ -203,7 +203,16 @@ contract {name} is ReentrancyGuard {{
     })
 
 # Write files and ground truth JSON
-ground_truth = {}
+ground_truth_path = os.path.join(EXPECTED_DIR, "benchmark_ground_truth.json")
+existing_gt = {}
+if os.path.exists(ground_truth_path):
+    try:
+        with open(ground_truth_path, "r", encoding="utf-8") as f:
+            existing_gt = json.load(f)
+    except Exception:
+        existing_gt = {}
+
+ground_truth = dict(existing_gt)
 for item in contracts_data:
     file_path = os.path.join(CONTRACTS_DIR, f"{item['name']}.sol")
     with open(file_path, "w", encoding="utf-8") as f:
@@ -213,11 +222,12 @@ for item in contracts_data:
         "filename": f"{item['name']}.sol",
         "category": item["category"],
         "has_vulnerability": item["has_vulnerability"],
-        "expected_severity": item["expected_severity"]
+        "expected_severity": item["expected_severity"],
+        "dataset_type": "synthetic_template"
     }
 
-ground_truth_path = os.path.join(EXPECTED_DIR, "benchmark_ground_truth.json")
 with open(ground_truth_path, "w", encoding="utf-8") as f:
     json.dump(ground_truth, f, indent=2)
 
-print(f"Generated {len(contracts_data)} benchmark contracts and ground truth catalog at {ground_truth_path}")
+print(f"Generated {len(contracts_data)} template benchmark contracts. Total in catalog: {len(ground_truth)} at {ground_truth_path}")
+

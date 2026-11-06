@@ -3,7 +3,7 @@ import { Finding, Scan, ScanSummary } from '../types';
 
 export const reportService = {
   async getScanHistory(): Promise<Scan[]> {
-    return request<Scan[]>('/history/');
+    return request<Scan[]>('/history/?limit=100');
   },
 
   async getDashboardSummary(): Promise<ScanSummary> {
@@ -30,3 +30,4 @@ export const reportService = {
     return request(`/history/compare?scan_id_a=${scanA}&scan_id_b=${scanB}`);
   },
 };
+

@@ -6,3 +6,4 @@ async def setup_test_database():
     """Ensure database tables exist before test execution."""
     await init_db()
     yield
+

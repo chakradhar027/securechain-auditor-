@@ -34,3 +34,4 @@ contract ReentrancyVulnerable {
         return address(this).balance;
     }
 }
+

@@ -55,3 +55,4 @@ Run the 60-contract benchmark evaluation suite:
 .venv/bin/python benchmark/benchmark_runner.py
 ```
 The suite measures True Positives, False Positives, Detection Accuracy, Precision, Recall, and F1-score across 50 vulnerable and 10 secure contracts.
+

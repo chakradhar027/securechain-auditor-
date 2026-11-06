@@ -26,3 +26,4 @@ contract UncheckedCallVulnerable {
         target.call(data);
     }
 }
+

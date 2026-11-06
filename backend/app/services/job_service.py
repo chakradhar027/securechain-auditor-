@@ -38,3 +38,4 @@ class JobService:
         return self._jobs.get(scan_id)
 
 job_service = JobService()
+

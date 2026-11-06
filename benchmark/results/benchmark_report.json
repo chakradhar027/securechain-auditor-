@@ -1,615 +1,1252 @@
 {
-  "total_contracts": 60,
-  "true_positives": 50,
-  "true_negatives": 10,
-  "false_positives": 0,
-  "false_negatives": 0,
-  "metrics": {
+  "overall_evaluation": {
+    "total": 72,
+    "tp": 56,
+    "tn": 16,
+    "fp": 0,
+    "fn": 0,
     "accuracy": 100.0,
     "precision": 100.0,
     "recall": 100.0,
     "f1_score": 100.0
   },
+  "confusion_matrix": {
+    "true_positive": 56,
+    "true_negative": 16,
+    "false_positive": 0,
+    "false_negative": 0
+  },
+  "dataset_breakdown": {
+    "synthetic_template": {
+      "total": 60,
+      "tp": 50,
+      "tn": 10,
+      "fp": 0,
+      "fn": 0,
+      "accuracy": 100.0,
+      "precision": 100.0,
+      "recall": 100.0,
+      "f1_score": 100.0
+    },
+    "independent_public": {
+      "total": 12,
+      "tp": 6,
+      "tn": 6,
+      "fp": 0,
+      "fn": 0,
+      "accuracy": 100.0,
+      "precision": 100.0,
+      "recall": 100.0,
+      "f1_score": 100.0
+    }
+  },
+  "category_breakdown": {
+    "REENTRANCY": {
+      "total": 16,
+      "tp": 16,
+      "tn": 0,
+      "fp": 0,
+      "fn": 0,
+      "accuracy": 100.0,
+      "precision": 100.0,
+      "recall": 100.0,
+      "f1_score": 100.0
+    },
+    "ACCESS_CONTROL": {
+      "total": 18,
+      "tp": 18,
+      "tn": 0,
+      "fp": 0,
+      "fn": 0,
+      "accuracy": 100.0,
+      "precision": 100.0,
+      "recall": 100.0,
+      "f1_score": 100.0
+    },
+    "UNCHECKED_CALL": {
+      "total": 11,
+      "tp": 11,
+      "tn": 0,
+      "fp": 0,
+      "fn": 0,
+      "accuracy": 100.0,
+      "precision": 100.0,
+      "recall": 100.0,
+      "f1_score": 100.0
+    },
+    "ORACLE_MANIPULATION": {
+      "total": 11,
+      "tp": 11,
+      "tn": 0,
+      "fp": 0,
+      "fn": 0,
+      "accuracy": 100.0,
+      "precision": 100.0,
+      "recall": 100.0,
+      "f1_score": 100.0
+    },
+    "SECURE_BASELINE": {
+      "total": 16,
+      "tp": 0,
+      "tn": 16,
+      "fp": 0,
+      "fn": 0,
+      "accuracy": 100.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0
+    }
+  },
   "contracts_evaluated": [
     {
       "contract": "Benchmark_Reentrancy_01",
+      "filename": "Benchmark_Reentrancy_01.sol",
+      "dataset_type": "synthetic_template",
       "category": "REENTRANCY",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "REENTRANCY"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
-      "risk_score": 100.0,
-      "findings_count": 4
+      "risk_score": 85.0,
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_Reentrancy_02",
+      "filename": "Benchmark_Reentrancy_02.sol",
+      "dataset_type": "synthetic_template",
       "category": "REENTRANCY",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "REENTRANCY"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
-      "risk_score": 100.0,
-      "findings_count": 4
+      "risk_score": 85.0,
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_Reentrancy_03",
+      "filename": "Benchmark_Reentrancy_03.sol",
+      "dataset_type": "synthetic_template",
       "category": "REENTRANCY",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "REENTRANCY"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
-      "risk_score": 100.0,
-      "findings_count": 4
+      "risk_score": 85.0,
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_Reentrancy_04",
+      "filename": "Benchmark_Reentrancy_04.sol",
+      "dataset_type": "synthetic_template",
       "category": "REENTRANCY",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "REENTRANCY"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
-      "risk_score": 100.0,
-      "findings_count": 4
+      "risk_score": 85.0,
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_Reentrancy_05",
+      "filename": "Benchmark_Reentrancy_05.sol",
+      "dataset_type": "synthetic_template",
       "category": "REENTRANCY",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "REENTRANCY"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
-      "risk_score": 100.0,
-      "findings_count": 4
+      "risk_score": 85.0,
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_Reentrancy_06",
+      "filename": "Benchmark_Reentrancy_06.sol",
+      "dataset_type": "synthetic_template",
       "category": "REENTRANCY",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "REENTRANCY"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
-      "risk_score": 100.0,
-      "findings_count": 4
+      "risk_score": 85.0,
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_Reentrancy_07",
+      "filename": "Benchmark_Reentrancy_07.sol",
+      "dataset_type": "synthetic_template",
       "category": "REENTRANCY",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "REENTRANCY"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
-      "risk_score": 100.0,
-      "findings_count": 4
+      "risk_score": 85.0,
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_Reentrancy_08",
+      "filename": "Benchmark_Reentrancy_08.sol",
+      "dataset_type": "synthetic_template",
       "category": "REENTRANCY",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "REENTRANCY"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
-      "risk_score": 100.0,
-      "findings_count": 4
+      "risk_score": 85.0,
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_Reentrancy_09",
+      "filename": "Benchmark_Reentrancy_09.sol",
+      "dataset_type": "synthetic_template",
       "category": "REENTRANCY",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "REENTRANCY"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
-      "risk_score": 100.0,
-      "findings_count": 4
+      "risk_score": 85.0,
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_Reentrancy_10",
+      "filename": "Benchmark_Reentrancy_10.sol",
+      "dataset_type": "synthetic_template",
       "category": "REENTRANCY",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "REENTRANCY"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
-      "risk_score": 100.0,
-      "findings_count": 4
+      "risk_score": 85.0,
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_Reentrancy_11",
+      "filename": "Benchmark_Reentrancy_11.sol",
+      "dataset_type": "synthetic_template",
       "category": "REENTRANCY",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "REENTRANCY"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
-      "risk_score": 100.0,
-      "findings_count": 4
+      "risk_score": 85.0,
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_Reentrancy_12",
+      "filename": "Benchmark_Reentrancy_12.sol",
+      "dataset_type": "synthetic_template",
       "category": "REENTRANCY",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "REENTRANCY"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
-      "risk_score": 100.0,
-      "findings_count": 4
+      "risk_score": 85.0,
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_Reentrancy_13",
+      "filename": "Benchmark_Reentrancy_13.sol",
+      "dataset_type": "synthetic_template",
       "category": "REENTRANCY",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "REENTRANCY"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
-      "risk_score": 100.0,
-      "findings_count": 4
+      "risk_score": 85.0,
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_Reentrancy_14",
+      "filename": "Benchmark_Reentrancy_14.sol",
+      "dataset_type": "synthetic_template",
       "category": "REENTRANCY",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "REENTRANCY"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
-      "risk_score": 100.0,
-      "findings_count": 4
+      "risk_score": 85.0,
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_Reentrancy_15",
+      "filename": "Benchmark_Reentrancy_15.sol",
+      "dataset_type": "synthetic_template",
       "category": "REENTRANCY",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "REENTRANCY"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
-      "risk_score": 100.0,
-      "findings_count": 4
+      "risk_score": 85.0,
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_AccessControl_01",
+      "filename": "Benchmark_AccessControl_01.sol",
+      "dataset_type": "synthetic_template",
       "category": "ACCESS_CONTROL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
       "risk_score": 80.0,
-      "findings_count": 3
+      "findings_count": 6
     },
     {
       "contract": "Benchmark_AccessControl_02",
+      "filename": "Benchmark_AccessControl_02.sol",
+      "dataset_type": "synthetic_template",
       "category": "ACCESS_CONTROL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL",
+        "OTHER"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
-      "risk_score": 80.0,
-      "findings_count": 3
+      "risk_score": 100.0,
+      "findings_count": 8
     },
     {
       "contract": "Benchmark_AccessControl_03",
+      "filename": "Benchmark_AccessControl_03.sol",
+      "dataset_type": "synthetic_template",
       "category": "ACCESS_CONTROL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
       "risk_score": 80.0,
-      "findings_count": 3
+      "findings_count": 6
     },
     {
       "contract": "Benchmark_AccessControl_04",
+      "filename": "Benchmark_AccessControl_04.sol",
+      "dataset_type": "synthetic_template",
       "category": "ACCESS_CONTROL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL",
+        "OTHER"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
-      "risk_score": 80.0,
-      "findings_count": 3
+      "risk_score": 100.0,
+      "findings_count": 8
     },
     {
       "contract": "Benchmark_AccessControl_05",
+      "filename": "Benchmark_AccessControl_05.sol",
+      "dataset_type": "synthetic_template",
       "category": "ACCESS_CONTROL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
       "risk_score": 80.0,
-      "findings_count": 3
+      "findings_count": 6
     },
     {
       "contract": "Benchmark_AccessControl_06",
+      "filename": "Benchmark_AccessControl_06.sol",
+      "dataset_type": "synthetic_template",
       "category": "ACCESS_CONTROL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL",
+        "OTHER"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
-      "risk_score": 80.0,
-      "findings_count": 3
+      "risk_score": 100.0,
+      "findings_count": 8
     },
     {
       "contract": "Benchmark_AccessControl_07",
+      "filename": "Benchmark_AccessControl_07.sol",
+      "dataset_type": "synthetic_template",
       "category": "ACCESS_CONTROL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
       "risk_score": 80.0,
-      "findings_count": 3
+      "findings_count": 6
     },
     {
       "contract": "Benchmark_AccessControl_08",
+      "filename": "Benchmark_AccessControl_08.sol",
+      "dataset_type": "synthetic_template",
       "category": "ACCESS_CONTROL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL",
+        "OTHER"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
-      "risk_score": 80.0,
-      "findings_count": 3
+      "risk_score": 100.0,
+      "findings_count": 8
     },
     {
       "contract": "Benchmark_AccessControl_09",
+      "filename": "Benchmark_AccessControl_09.sol",
+      "dataset_type": "synthetic_template",
       "category": "ACCESS_CONTROL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
       "risk_score": 80.0,
-      "findings_count": 3
+      "findings_count": 6
     },
     {
       "contract": "Benchmark_AccessControl_10",
+      "filename": "Benchmark_AccessControl_10.sol",
+      "dataset_type": "synthetic_template",
       "category": "ACCESS_CONTROL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL",
+        "OTHER"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
-      "risk_score": 80.0,
-      "findings_count": 3
+      "risk_score": 100.0,
+      "findings_count": 8
     },
     {
       "contract": "Benchmark_AccessControl_11",
+      "filename": "Benchmark_AccessControl_11.sol",
+      "dataset_type": "synthetic_template",
       "category": "ACCESS_CONTROL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
       "risk_score": 80.0,
-      "findings_count": 3
+      "findings_count": 6
     },
     {
       "contract": "Benchmark_AccessControl_12",
+      "filename": "Benchmark_AccessControl_12.sol",
+      "dataset_type": "synthetic_template",
       "category": "ACCESS_CONTROL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL",
+        "OTHER"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
-      "risk_score": 80.0,
-      "findings_count": 3
+      "risk_score": 100.0,
+      "findings_count": 8
     },
     {
       "contract": "Benchmark_AccessControl_13",
+      "filename": "Benchmark_AccessControl_13.sol",
+      "dataset_type": "synthetic_template",
       "category": "ACCESS_CONTROL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
       "risk_score": 80.0,
-      "findings_count": 3
+      "findings_count": 6
     },
     {
       "contract": "Benchmark_AccessControl_14",
+      "filename": "Benchmark_AccessControl_14.sol",
+      "dataset_type": "synthetic_template",
       "category": "ACCESS_CONTROL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL",
+        "OTHER"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
-      "risk_score": 80.0,
-      "findings_count": 3
+      "risk_score": 100.0,
+      "findings_count": 8
     },
     {
       "contract": "Benchmark_AccessControl_15",
+      "filename": "Benchmark_AccessControl_15.sol",
+      "dataset_type": "synthetic_template",
       "category": "ACCESS_CONTROL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
       "risk_score": 80.0,
-      "findings_count": 3
+      "findings_count": 6
     },
     {
       "contract": "Benchmark_UncheckedCall_01",
+      "filename": "Benchmark_UncheckedCall_01.sol",
+      "dataset_type": "synthetic_template",
       "category": "UNCHECKED_CALL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL",
+        "UNCHECKED_CALL"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "HIGH",
       "risk_score": 55.0,
-      "findings_count": 3
+      "findings_count": 7
     },
     {
       "contract": "Benchmark_UncheckedCall_02",
+      "filename": "Benchmark_UncheckedCall_02.sol",
+      "dataset_type": "synthetic_template",
       "category": "UNCHECKED_CALL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL",
+        "UNCHECKED_CALL"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "HIGH",
       "risk_score": 55.0,
-      "findings_count": 3
+      "findings_count": 7
     },
     {
       "contract": "Benchmark_UncheckedCall_03",
+      "filename": "Benchmark_UncheckedCall_03.sol",
+      "dataset_type": "synthetic_template",
       "category": "UNCHECKED_CALL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL",
+        "UNCHECKED_CALL"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "HIGH",
       "risk_score": 55.0,
-      "findings_count": 3
+      "findings_count": 7
     },
     {
       "contract": "Benchmark_UncheckedCall_04",
+      "filename": "Benchmark_UncheckedCall_04.sol",
+      "dataset_type": "synthetic_template",
       "category": "UNCHECKED_CALL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL",
+        "UNCHECKED_CALL"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "HIGH",
       "risk_score": 55.0,
-      "findings_count": 3
+      "findings_count": 7
     },
     {
       "contract": "Benchmark_UncheckedCall_05",
+      "filename": "Benchmark_UncheckedCall_05.sol",
+      "dataset_type": "synthetic_template",
       "category": "UNCHECKED_CALL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL",
+        "UNCHECKED_CALL"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "HIGH",
       "risk_score": 55.0,
-      "findings_count": 3
+      "findings_count": 7
     },
     {
       "contract": "Benchmark_UncheckedCall_06",
+      "filename": "Benchmark_UncheckedCall_06.sol",
+      "dataset_type": "synthetic_template",
       "category": "UNCHECKED_CALL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL",
+        "UNCHECKED_CALL"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "HIGH",
       "risk_score": 55.0,
-      "findings_count": 3
+      "findings_count": 7
     },
     {
       "contract": "Benchmark_UncheckedCall_07",
+      "filename": "Benchmark_UncheckedCall_07.sol",
+      "dataset_type": "synthetic_template",
       "category": "UNCHECKED_CALL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL",
+        "UNCHECKED_CALL"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "HIGH",
       "risk_score": 55.0,
-      "findings_count": 3
+      "findings_count": 7
     },
     {
       "contract": "Benchmark_UncheckedCall_08",
+      "filename": "Benchmark_UncheckedCall_08.sol",
+      "dataset_type": "synthetic_template",
       "category": "UNCHECKED_CALL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL",
+        "UNCHECKED_CALL"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "HIGH",
       "risk_score": 55.0,
-      "findings_count": 3
+      "findings_count": 7
     },
     {
       "contract": "Benchmark_UncheckedCall_09",
+      "filename": "Benchmark_UncheckedCall_09.sol",
+      "dataset_type": "synthetic_template",
       "category": "UNCHECKED_CALL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL",
+        "UNCHECKED_CALL"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "HIGH",
       "risk_score": 55.0,
-      "findings_count": 3
+      "findings_count": 7
     },
     {
       "contract": "Benchmark_UncheckedCall_10",
+      "filename": "Benchmark_UncheckedCall_10.sol",
+      "dataset_type": "synthetic_template",
       "category": "UNCHECKED_CALL",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL",
+        "UNCHECKED_CALL"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "HIGH",
       "risk_score": 55.0,
-      "findings_count": 3
+      "findings_count": 7
     },
     {
       "contract": "Benchmark_Oracle_01",
+      "filename": "Benchmark_Oracle_01.sol",
+      "dataset_type": "synthetic_template",
       "category": "ORACLE_MANIPULATION",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "OTHER",
+        "ORACLE_MANIPULATION"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
       "risk_score": 80.0,
-      "findings_count": 2
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_Oracle_02",
+      "filename": "Benchmark_Oracle_02.sol",
+      "dataset_type": "synthetic_template",
       "category": "ORACLE_MANIPULATION",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "OTHER",
+        "ORACLE_MANIPULATION"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
       "risk_score": 80.0,
-      "findings_count": 2
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_Oracle_03",
+      "filename": "Benchmark_Oracle_03.sol",
+      "dataset_type": "synthetic_template",
       "category": "ORACLE_MANIPULATION",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "OTHER",
+        "ORACLE_MANIPULATION"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
       "risk_score": 80.0,
-      "findings_count": 2
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_Oracle_04",
+      "filename": "Benchmark_Oracle_04.sol",
+      "dataset_type": "synthetic_template",
       "category": "ORACLE_MANIPULATION",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "OTHER",
+        "ORACLE_MANIPULATION"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
       "risk_score": 80.0,
-      "findings_count": 2
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_Oracle_05",
+      "filename": "Benchmark_Oracle_05.sol",
+      "dataset_type": "synthetic_template",
       "category": "ORACLE_MANIPULATION",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "OTHER",
+        "ORACLE_MANIPULATION"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
       "risk_score": 80.0,
-      "findings_count": 2
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_Oracle_06",
+      "filename": "Benchmark_Oracle_06.sol",
+      "dataset_type": "synthetic_template",
       "category": "ORACLE_MANIPULATION",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "OTHER",
+        "ORACLE_MANIPULATION"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
       "risk_score": 80.0,
-      "findings_count": 2
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_Oracle_07",
+      "filename": "Benchmark_Oracle_07.sol",
+      "dataset_type": "synthetic_template",
       "category": "ORACLE_MANIPULATION",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "OTHER",
+        "ORACLE_MANIPULATION"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
       "risk_score": 80.0,
-      "findings_count": 2
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_Oracle_08",
+      "filename": "Benchmark_Oracle_08.sol",
+      "dataset_type": "synthetic_template",
       "category": "ORACLE_MANIPULATION",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "OTHER",
+        "ORACLE_MANIPULATION"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
       "risk_score": 80.0,
-      "findings_count": 2
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_Oracle_09",
+      "filename": "Benchmark_Oracle_09.sol",
+      "dataset_type": "synthetic_template",
       "category": "ORACLE_MANIPULATION",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "OTHER",
+        "ORACLE_MANIPULATION"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
       "risk_score": 80.0,
-      "findings_count": 2
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_Oracle_10",
+      "filename": "Benchmark_Oracle_10.sol",
+      "dataset_type": "synthetic_template",
       "category": "ORACLE_MANIPULATION",
       "expected_vulnerable": true,
       "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "OTHER",
+        "ORACLE_MANIPULATION"
+      ],
       "classification": "TRUE_POSITIVE",
       "risk_level": "CRITICAL",
       "risk_score": 80.0,
-      "findings_count": 2
+      "findings_count": 5
     },
     {
       "contract": "Benchmark_Secure_01",
+      "filename": "Benchmark_Secure_01.sol",
+      "dataset_type": "synthetic_template",
       "category": "SECURE",
       "expected_vulnerable": false,
       "detected_vulnerable": false,
+      "category_match": true,
+      "detected_categories": [],
       "classification": "TRUE_NEGATIVE",
-      "risk_level": "LOW",
-      "risk_score": 5.0,
-      "findings_count": 1
+      "risk_level": "SECURE",
+      "risk_score": 0.0,
+      "findings_count": 4
     },
     {
       "contract": "Benchmark_Secure_02",
+      "filename": "Benchmark_Secure_02.sol",
+      "dataset_type": "synthetic_template",
       "category": "SECURE",
       "expected_vulnerable": false,
       "detected_vulnerable": false,
+      "category_match": true,
+      "detected_categories": [],
       "classification": "TRUE_NEGATIVE",
-      "risk_level": "LOW",
-      "risk_score": 5.0,
-      "findings_count": 1
+      "risk_level": "SECURE",
+      "risk_score": 0.0,
+      "findings_count": 4
     },
     {
       "contract": "Benchmark_Secure_03",
+      "filename": "Benchmark_Secure_03.sol",
+      "dataset_type": "synthetic_template",
       "category": "SECURE",
       "expected_vulnerable": false,
       "detected_vulnerable": false,
+      "category_match": true,
+      "detected_categories": [],
       "classification": "TRUE_NEGATIVE",
-      "risk_level": "LOW",
-      "risk_score": 5.0,
-      "findings_count": 1
+      "risk_level": "SECURE",
+      "risk_score": 0.0,
+      "findings_count": 4
     },
     {
       "contract": "Benchmark_Secure_04",
+      "filename": "Benchmark_Secure_04.sol",
+      "dataset_type": "synthetic_template",
       "category": "SECURE",
       "expected_vulnerable": false,
       "detected_vulnerable": false,
+      "category_match": true,
+      "detected_categories": [],
       "classification": "TRUE_NEGATIVE",
-      "risk_level": "LOW",
-      "risk_score": 5.0,
-      "findings_count": 1
+      "risk_level": "SECURE",
+      "risk_score": 0.0,
+      "findings_count": 4
     },
     {
       "contract": "Benchmark_Secure_05",
+      "filename": "Benchmark_Secure_05.sol",
+      "dataset_type": "synthetic_template",
       "category": "SECURE",
       "expected_vulnerable": false,
       "detected_vulnerable": false,
+      "category_match": true,
+      "detected_categories": [],
       "classification": "TRUE_NEGATIVE",
-      "risk_level": "LOW",
-      "risk_score": 5.0,
-      "findings_count": 1
+      "risk_level": "SECURE",
+      "risk_score": 0.0,
+      "findings_count": 4
     },
     {
       "contract": "Benchmark_Secure_06",
+      "filename": "Benchmark_Secure_06.sol",
+      "dataset_type": "synthetic_template",
       "category": "SECURE",
       "expected_vulnerable": false,
       "detected_vulnerable": false,
+      "category_match": true,
+      "detected_categories": [],
       "classification": "TRUE_NEGATIVE",
-      "risk_level": "LOW",
-      "risk_score": 5.0,
-      "findings_count": 1
+      "risk_level": "SECURE",
+      "risk_score": 0.0,
+      "findings_count": 4
     },
     {
       "contract": "Benchmark_Secure_07",
+      "filename": "Benchmark_Secure_07.sol",
+      "dataset_type": "synthetic_template",
       "category": "SECURE",
       "expected_vulnerable": false,
       "detected_vulnerable": false,
+      "category_match": true,
+      "detected_categories": [],
       "classification": "TRUE_NEGATIVE",
-      "risk_level": "LOW",
-      "risk_score": 5.0,
-      "findings_count": 1
+      "risk_level": "SECURE",
+      "risk_score": 0.0,
+      "findings_count": 4
     },
     {
       "contract": "Benchmark_Secure_08",
+      "filename": "Benchmark_Secure_08.sol",
+      "dataset_type": "synthetic_template",
       "category": "SECURE",
       "expected_vulnerable": false,
       "detected_vulnerable": false,
+      "category_match": true,
+      "detected_categories": [],
       "classification": "TRUE_NEGATIVE",
-      "risk_level": "LOW",
-      "risk_score": 5.0,
-      "findings_count": 1
+      "risk_level": "SECURE",
+      "risk_score": 0.0,
+      "findings_count": 4
     },
     {
       "contract": "Benchmark_Secure_09",
+      "filename": "Benchmark_Secure_09.sol",
+      "dataset_type": "synthetic_template",
       "category": "SECURE",
       "expected_vulnerable": false,
       "detected_vulnerable": false,
+      "category_match": true,
+      "detected_categories": [],
       "classification": "TRUE_NEGATIVE",
-      "risk_level": "LOW",
-      "risk_score": 5.0,
-      "findings_count": 1
+      "risk_level": "SECURE",
+      "risk_score": 0.0,
+      "findings_count": 4
     },
     {
       "contract": "Benchmark_Secure_10",
+      "filename": "Benchmark_Secure_10.sol",
+      "dataset_type": "synthetic_template",
       "category": "SECURE",
       "expected_vulnerable": false,
       "detected_vulnerable": false,
+      "category_match": true,
+      "detected_categories": [],
       "classification": "TRUE_NEGATIVE",
-      "risk_level": "LOW",
-      "risk_score": 5.0,
-      "findings_count": 1
+      "risk_level": "SECURE",
+      "risk_score": 0.0,
+      "findings_count": 4
+    },
+    {
+      "contract": "SWC107_SimpleDAO_Vulnerable",
+      "filename": "SWC107_SimpleDAO_Vulnerable.sol",
+      "dataset_type": "independent_swc",
+      "category": "REENTRANCY",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL",
+        "REENTRANCY"
+      ],
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 5
+    },
+    {
+      "contract": "SWC107_SimpleDAO_Fixed",
+      "filename": "SWC107_SimpleDAO_Fixed.sol",
+      "dataset_type": "independent_swc",
+      "category": "SECURE_BASELINE",
+      "expected_vulnerable": false,
+      "detected_vulnerable": false,
+      "category_match": true,
+      "detected_categories": [],
+      "classification": "TRUE_NEGATIVE",
+      "risk_level": "SECURE",
+      "risk_score": 0.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "SWC105_UnprotectedWithdraw_Vulnerable",
+      "filename": "SWC105_UnprotectedWithdraw_Vulnerable.sol",
+      "dataset_type": "independent_swc",
+      "category": "ACCESS_CONTROL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL"
+      ],
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 93.0,
+      "findings_count": 6
+    },
+    {
+      "contract": "SWC105_UnprotectedWithdraw_Fixed",
+      "filename": "SWC105_UnprotectedWithdraw_Fixed.sol",
+      "dataset_type": "independent_swc",
+      "category": "SECURE_BASELINE",
+      "expected_vulnerable": false,
+      "detected_vulnerable": false,
+      "category_match": true,
+      "detected_categories": [],
+      "classification": "TRUE_NEGATIVE",
+      "risk_level": "SECURE",
+      "risk_score": 0.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "SWC115_TxOriginPhishing_Vulnerable",
+      "filename": "SWC115_TxOriginPhishing_Vulnerable.sol",
+      "dataset_type": "independent_swc",
+      "category": "ACCESS_CONTROL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL",
+        "OTHER"
+      ],
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "HIGH",
+      "risk_score": 55.0,
+      "findings_count": 6
+    },
+    {
+      "contract": "SWC115_TxOriginPhishing_Fixed",
+      "filename": "SWC115_TxOriginPhishing_Fixed.sol",
+      "dataset_type": "independent_swc",
+      "category": "SECURE_BASELINE",
+      "expected_vulnerable": false,
+      "detected_vulnerable": false,
+      "category_match": true,
+      "detected_categories": [],
+      "classification": "TRUE_NEGATIVE",
+      "risk_level": "SECURE",
+      "risk_score": 0.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "SWC104_UncheckedSend_Vulnerable",
+      "filename": "SWC104_UncheckedSend_Vulnerable.sol",
+      "dataset_type": "independent_swc",
+      "category": "UNCHECKED_CALL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "UNCHECKED_CALL"
+      ],
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "MEDIUM",
+      "risk_score": 25.0,
+      "findings_count": 4
+    },
+    {
+      "contract": "SWC104_UncheckedSend_Fixed",
+      "filename": "SWC104_UncheckedSend_Fixed.sol",
+      "dataset_type": "independent_swc",
+      "category": "SECURE_BASELINE",
+      "expected_vulnerable": false,
+      "detected_vulnerable": false,
+      "category_match": true,
+      "detected_categories": [],
+      "classification": "TRUE_NEGATIVE",
+      "risk_level": "SECURE",
+      "risk_score": 0.0,
+      "findings_count": 3
+    },
+    {
+      "contract": "SWC106_UnprotectedSelfdestruct_Vulnerable",
+      "filename": "SWC106_UnprotectedSelfdestruct_Vulnerable.sol",
+      "dataset_type": "independent_swc",
+      "category": "ACCESS_CONTROL",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "ACCESS_CONTROL"
+      ],
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 5
+    },
+    {
+      "contract": "SWC106_UnprotectedSelfdestruct_Fixed",
+      "filename": "SWC106_UnprotectedSelfdestruct_Fixed.sol",
+      "dataset_type": "independent_swc",
+      "category": "SECURE_BASELINE",
+      "expected_vulnerable": false,
+      "detected_vulnerable": false,
+      "category_match": true,
+      "detected_categories": [],
+      "classification": "TRUE_NEGATIVE",
+      "risk_level": "SECURE",
+      "risk_score": 0.0,
+      "findings_count": 2
+    },
+    {
+      "contract": "RealWorld_PriceOracle_Vulnerable",
+      "filename": "RealWorld_PriceOracle_Vulnerable.sol",
+      "dataset_type": "independent_real_world",
+      "category": "ORACLE_MANIPULATION",
+      "expected_vulnerable": true,
+      "detected_vulnerable": true,
+      "category_match": true,
+      "detected_categories": [
+        "OTHER",
+        "ORACLE_MANIPULATION"
+      ],
+      "classification": "TRUE_POSITIVE",
+      "risk_level": "CRITICAL",
+      "risk_score": 80.0,
+      "findings_count": 4
+    },
+    {
+      "contract": "RealWorld_PriceOracle_Fixed",
+      "filename": "RealWorld_PriceOracle_Fixed.sol",
+      "dataset_type": "independent_real_world",
+      "category": "SECURE_BASELINE",
+      "expected_vulnerable": false,
+      "detected_vulnerable": false,
+      "category_match": true,
+      "detected_categories": [],
+      "classification": "TRUE_NEGATIVE",
+      "risk_level": "SECURE",
+      "risk_score": 0.0,
+      "findings_count": 3
     }
   ]
 }

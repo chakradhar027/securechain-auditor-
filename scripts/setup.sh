@@ -26,3 +26,4 @@ echo "[3/3] Generating Benchmark Dataset..."
 echo "=== Setup complete! ==="
 echo "To start backend:  ./scripts/start_backend.sh"
 echo "To start frontend: ./scripts/start_frontend.sh"
+

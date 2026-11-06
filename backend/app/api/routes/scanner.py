@@ -1,9 +1,12 @@
+import os
 from typing import List
 from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from sqlalchemy.orm import selectinload
 
+from app.config import settings
+from app.utils.process_runner import is_tool_available, is_mythril_operational
 from app.dependencies import get_db
 from app.models.scan import Scan
 from app.schemas.scan import ScanCreateRequest, ScanResponse
@@ -27,9 +30,9 @@ async def start_scan(
             contract_id=req.contract_id,
             engines=req.engines
         )
-        # Load findings for response
+        # Load findings and contract for response
         res = await db.execute(
-            select(Scan).options(selectinload(Scan.findings)).where(Scan.id == scan.id)
+            select(Scan).options(selectinload(Scan.findings), selectinload(Scan.contract)).where(Scan.id == scan.id)
         )
         return res.scalars().first()
     except ValueError as ve:
@@ -52,6 +55,10 @@ async def list_available_engines():
     """
     Returns available security engines and their capabilities.
     """
+    has_slither = os.path.exists(settings.SLITHER_PATH) or is_tool_available("slither") or os.path.exists(os.path.join(settings.VENV_BIN_DIR, "slither"))
+    has_foundry = os.path.exists(settings.FOUNDRY_FORGE_PATH) or is_tool_available("forge") or os.path.exists(os.path.join(settings.VENV_BIN_DIR, "forge"))
+    has_mythril = is_mythril_operational()
+
     return [
         {
             "id": "custom",
@@ -65,20 +72,21 @@ async def list_available_engines():
             "name": "Slither Static Analyzer",
             "type": "Static Analysis Framework",
             "capabilities": ["Delegatecall hijack", "Floating pragma", "Shadowed state", "Assembly inspection"],
-            "status": "READY"
+            "status": "READY" if has_slither else "UNAVAILABLE"
         },
         {
             "id": "mythril",
             "name": "Mythril Symbolic Engine",
             "type": "EVM Symbolic Execution",
             "capabilities": ["Execution path constraint solving", "Timestamp dependence", "Front-running", "Weak PRNG"],
-            "status": "READY"
+            "status": "READY" if has_mythril else "UNVERIFIED (Requires Docker daemon on Python 3.13)"
         },
         {
             "id": "foundry",
             "name": "Foundry Fuzz Testing Suite",
             "type": "Dynamic Property Invariant Fuzzing",
             "capabilities": ["Automated randomized fuzz inputs", "Solvency invariants", "Reentrancy depth verification"],
-            "status": "READY"
+            "status": "READY" if has_foundry else "UNAVAILABLE"
         }
     ]
+

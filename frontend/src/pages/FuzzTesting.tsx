@@ -140,3 +140,4 @@ export const FuzzTesting: React.FC<Props> = ({ activeScan }) => {
     </div>
   );
 };
+

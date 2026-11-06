@@ -50,7 +50,7 @@ export const RecentScans: React.FC<Props> = ({ scans, onSelectScan }) => {
                   <td className="py-3 px-3 font-semibold text-slate-200">
                     <div className="flex items-center space-x-1.5">
                       <FileCode className="w-3.5 h-3.5 text-slate-400" />
-                      <span>Contract #{scan.contract_id}</span>
+                      <span>{scan.contract_name || `Contract #${scan.contract_id}`}</span>
                     </div>
                   </td>
                   <td className="py-3 px-3">
@@ -95,3 +95,4 @@ export const RecentScans: React.FC<Props> = ({ scans, onSelectScan }) => {
     </div>
   );
 };
+

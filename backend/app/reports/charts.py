@@ -29,3 +29,4 @@ def create_severity_distribution_bar(counts: dict, width: int = 480, height: int
             current_x += bar_w
 
     return d
+

@@ -38,3 +38,12 @@ class BaseDetector(ABC):
             prefix = ">> " if (i + 1) == line_no else "   "
             snippet.append(f"{prefix}{i+1}: {lines[i]}")
         return "\n".join(snippet)
+
+    @staticmethod
+    def strip_comments(source_code: str) -> str:
+        """Removes single-line and multi-line comments from Solidity code."""
+        import re
+        no_block = re.sub(r"/\*[\s\S]*?\*/", "", source_code)
+        no_line = re.sub(r"//.*", "", no_block)
+        return no_line
+

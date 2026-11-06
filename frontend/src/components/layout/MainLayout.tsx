@@ -19,3 +19,4 @@ export const MainLayout: React.FC<Props> = ({ currentTab, onNavigate, children }
     </div>
   );
 };
+

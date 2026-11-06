@@ -106,3 +106,4 @@ def test_oracle_manipulation_detector():
     assert len(findings) > 0
     assert any(f.category == "ORACLE_MANIPULATION" for f in findings)
     assert any(f.severity == "CRITICAL" for f in findings)
+

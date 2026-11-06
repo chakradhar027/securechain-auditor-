@@ -46,3 +46,20 @@ async def run_command_async(
 def is_tool_available(tool_name: str) -> bool:
     """Checks if a binary is present on PATH."""
     return shutil.which(tool_name) is not None
+
+def is_mythril_operational() -> bool:
+    """
+    Checks if a real Mythril execution environment is active and operational.
+    Requires either Docker or a functioning native myth binary (not broken Python 3.13 shim).
+    """
+    if is_tool_available("docker"):
+        return True
+    if is_tool_available("myth"):
+        try:
+            import subprocess
+            rc = subprocess.run(["myth", "version"], capture_output=True, timeout=2).returncode
+            return rc == 0
+        except Exception:
+            return False
+    return False
+

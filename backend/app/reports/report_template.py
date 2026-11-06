@@ -81,3 +81,4 @@ def get_report_styles():
     ))
 
     return styles
+

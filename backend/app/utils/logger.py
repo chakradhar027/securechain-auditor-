@@ -15,3 +15,4 @@ def get_logger(name: str = "securechain") -> logging.Logger:
     return logger
 
 logger = get_logger("securechain-auditor")
+

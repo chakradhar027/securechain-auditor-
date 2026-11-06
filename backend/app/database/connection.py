@@ -27,6 +27,26 @@ async def init_db() -> None:
     
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
+        
+        def run_migrations(connection):
+            from sqlalchemy import inspect, text
+            inspector = inspect(connection)
+            if "scans" in inspector.get_table_names():
+                columns = [col["name"] for col in inspector.get_columns("scans")]
+                if "engines_requested" not in columns:
+                    connection.execute(text("ALTER TABLE scans ADD COLUMN engines_requested JSON DEFAULT '[]'"))
+
+            if "contracts" in inspector.get_table_names():
+                res = connection.execute(text("SELECT id, name, filename, source_code FROM contracts WHERE name = 'adopting' OR name LIKE 'SmartContract%'"))
+                rows = res.fetchall()
+                if rows:
+                    from app.utils.file_validator import extract_contract_name
+                    for row_id, old_name, filename, source_code in rows:
+                        new_name = extract_contract_name(source_code, filename=filename)
+                        if new_name and new_name != old_name:
+                            connection.execute(text("UPDATE contracts SET name = :name WHERE id = :id"), {"name": new_name, "id": row_id})
+
+        await conn.run_sync(run_migrations)
 
 async def get_db() -> AsyncGenerator[AsyncSession, None]:
     async with AsyncSessionLocal() as session:
@@ -34,3 +54,4 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
             yield session
         finally:
             await session.close()
+

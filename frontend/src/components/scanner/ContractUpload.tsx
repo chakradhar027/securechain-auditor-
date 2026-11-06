@@ -248,3 +248,4 @@ contract SimpleBank {
     </div>
   );
 };
+

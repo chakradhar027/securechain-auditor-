@@ -18,3 +18,4 @@ class Contract(Base):
     created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
 
     scans = relationship("Scan", back_populates="contract", cascade="all, delete-orphan")
+

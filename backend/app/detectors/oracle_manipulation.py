@@ -9,15 +9,16 @@ class OracleManipulationDetector(BaseDetector):
     def detect(self, source_code: str, file_path: str = "") -> List[RawFinding]:
         findings: List[RawFinding] = []
         lines = source_code.splitlines()
+        clean_code = self.strip_comments(source_code)
 
         # AMM spot reserve calculation patterns: e.g. reserve0 / reserve1, or getReserves()
-        uses_reserves = bool(re.search(r"\bgetReserves\s*\(", source_code))
+        uses_reserves = bool(re.search(r"\bgetReserves\s*\(", clean_code))
         uses_balance_for_price = bool(
-            re.search(r"balanceOf\s*\([^)]*\)\s*[/|\*]", source_code) or
-            re.search(r"address\(this\)\.balance\s*[/|\*]", source_code)
+            re.search(r"balanceOf\s*\([^)]*\)\s*[/|\*]", clean_code) or
+            re.search(r"address\(this\)\.balance\s*[/|\*]", clean_code)
         )
-        has_twap = bool(re.search(r"\bTWAP\b|\bconsult\b|\bobserve\b|\bperiodSize\b", source_code, re.IGNORECASE))
-        has_chainlink = bool(re.search(r"AggregatorV3Interface|latestRoundData", source_code))
+        has_twap = bool(re.search(r"\bTWAP\b|\bconsult\b|\bobserve\b|\bperiodSize\b", clean_code, re.IGNORECASE))
+        has_chainlink = bool(re.search(r"AggregatorV3Interface|latestRoundData", clean_code))
 
         for idx, line in enumerate(lines, start=1):
             stripped = line.strip()
@@ -114,3 +115,4 @@ class OracleManipulationDetector(BaseDetector):
                     ))
 
         return findings
+

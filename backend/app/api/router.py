@@ -14,3 +14,4 @@ api_router.include_router(scanner_router)
 api_router.include_router(findings_router)
 api_router.include_router(history_router)
 api_router.include_router(reports_router)
+

@@ -66,3 +66,4 @@ SecureChain Auditor supports both PostgreSQL and async SQLite engines via SQLAlc
        │ cvss_score (Float)     │
        └────────────────────────┘
 ```
+

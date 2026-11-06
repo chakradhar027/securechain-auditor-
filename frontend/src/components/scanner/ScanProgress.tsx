@@ -67,3 +67,4 @@ export const ScanProgress: React.FC<Props> = ({ progressPercent, currentStep, is
     </div>
   );
 };
+

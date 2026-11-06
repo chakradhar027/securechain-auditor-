@@ -72,6 +72,10 @@ class ReentrancyDetector(BaseDetector):
             re.search(r"\bReentrancyGuard\b", source_code)
         )
 
+        has_access_control = bool(
+            re.search(r"\bonlyOwner\b|\bonlyAdmin\b|\bonlyRole\b|require\(msg\.sender\s*==", func_text)
+        )
+
         external_call_lines = []
         state_write_lines = []
 
@@ -111,7 +115,8 @@ class ReentrancyDetector(BaseDetector):
                         f"In function '{func_name}', an external call is executed on line {call_line} "
                         f"before the contract state is updated on line {sw_line} ('{sw_txt.strip()}'). "
                         f"An attacker can hijack control flow via a fallback/receive function to recursively "
-                        f"drain funds or corrupt state before balance deductions occur."
+                        f"drain funds or corrupt state before balance deductions occur. "
+                        f"Exploitability Assessment: High Exploitability (Checks-Effects-Interactions violation)."
                     ),
                     recommendation=(
                         "Follow the Checks-Effects-Interactions (CEI) pattern: update all state variables (e.g. zero balance) "
@@ -126,26 +131,38 @@ class ReentrancyDetector(BaseDetector):
                     cvss_score=8.9 if severity == "CRITICAL" else 7.5
                 ))
             elif not has_reentrancy_guard and (".call{" in call_txt or "call.value" in call_txt):
-                # Unprotected external call without guard
+                # If there are NO subsequent writes in this function:
+                # 1. If restricted by access control (e.g. onlyOwner), it's an authorized administrative transfer.
+                if has_access_control:
+                    continue
+
+                # 2. If state was updated BEFORE the call (Checks-Effects-Interactions pattern), it is not reentrant.
+                has_prior_write = bool([sw for sw in state_write_lines if sw[0] < call_line])
+                if has_prior_write:
+                    continue
+
+                # Public/unprotected low-level call without guard and without state accounting:
                 snippet = self.extract_snippet(source_code, call_line, context_lines=3)
                 findings.append(RawFinding(
-                    title=f"Unprotected External Call in '{func_name}'",
+                    title=f"Unprotected External Call Pattern in '{func_name}'",
                     category="REENTRANCY",
-                    severity="MEDIUM",
-                    confidence="MEDIUM",
+                    severity="LOW",
+                    confidence="LOW",
                     engine="custom",
                     description=(
-                        f"Function '{func_name}' makes an external low-level call on line {call_line} without "
-                        f"an explicit reentrancy lock or nonReentrant modifier."
+                        f"Function '{func_name}' executes a low-level call on line {call_line} without a 'nonReentrant' modifier. "
+                        f"Exploitability Assessment: Low Risk. No subsequent state modification occurs in this function, "
+                        f"but developers should ensure cross-function state cannot be manipulated by untrusted callbacks."
                     ),
-                    recommendation="Ensure OpenZeppelin's ReentrancyGuard is inherited and apply 'nonReentrant' to all external functions invoking external addresses.",
+                    recommendation="If cross-function state dependencies exist, inherit OpenZeppelin's ReentrancyGuard and apply 'nonReentrant'.",
                     file_path=file_path,
                     line_start=call_line,
                     line_end=call_line,
                     code_snippet=snippet,
                     cwe_id="CWE-841",
                     swc_id="SWC-107",
-                    cvss_score=5.5
+                    cvss_score=3.5
                 ))
 
         return findings
+

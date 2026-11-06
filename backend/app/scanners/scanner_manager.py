@@ -21,6 +21,7 @@ class ScannerManager:
         self.slither_scanner = SlitherScanner()
         self.mythril_scanner = MythrilScanner()
         self.foundry_scanner = FoundryScanner()
+        self.last_executed_engines: List[str] = []
 
     async def run_scanners(
         self,
@@ -34,18 +35,23 @@ class ScannerManager:
         """
         all_findings: List[RawFinding] = []
         fuzz_meta: Dict[str, Any] = {"total": 0, "passed": 0, "failed": 0, "tests": []}
+        executed_engines: List[str] = []
 
         logger.info(f"Initiating scan with engines: {enabled_engines}")
 
         # 1. Custom Detectors
         if "custom" in enabled_engines:
             logger.info("Executing Custom Detection Engine...")
+            custom_ok = True
             for detector in self.custom_detectors:
                 try:
                     res = detector.detect(source_code, file_path)
                     all_findings.extend(res)
                 except Exception as e:
+                    custom_ok = False
                     logger.error(f"Custom detector {detector.name} error: {e}")
+            if custom_ok:
+                executed_engines.append("custom")
 
         # 2. Slither Static Analysis
         if "slither" in enabled_engines:
@@ -53,6 +59,7 @@ class ScannerManager:
             try:
                 slither_res = await self.slither_scanner.scan(file_path, source_code)
                 all_findings.extend(slither_res)
+                executed_engines.append("slither")
             except Exception as e:
                 logger.error(f"Slither scanner error: {e}")
 
@@ -62,6 +69,11 @@ class ScannerManager:
             try:
                 myth_res = await self.mythril_scanner.scan(file_path, source_code)
                 all_findings.extend(myth_res)
+                from app.utils.process_runner import is_mythril_operational
+                if is_mythril_operational():
+                    executed_engines.append("mythril")
+                else:
+                    logger.info("Mythril execution unverified (Docker daemon unavailable). Excluded from executed engines.")
             except Exception as e:
                 logger.error(f"Mythril scanner error: {e}")
 
@@ -72,8 +84,11 @@ class ScannerManager:
                 foundry_res, f_meta = await self.foundry_scanner.run_fuzz_tests(file_path, source_code)
                 all_findings.extend(foundry_res)
                 fuzz_meta = f_meta
+                executed_engines.append("foundry")
             except Exception as e:
                 logger.error(f"Foundry scanner error: {e}")
 
-        logger.info(f"Scan complete. Collected {len(all_findings)} raw findings across engines.")
+        self.last_executed_engines = executed_engines
+        logger.info(f"Scan complete. Executed engines: {executed_engines}. Collected {len(all_findings)} raw findings across engines.")
         return all_findings, fuzz_meta
+

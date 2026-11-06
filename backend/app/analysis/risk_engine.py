@@ -27,13 +27,12 @@ class RiskEngine:
 
         fuzz_failed = fuzz_meta.get("failed", 0)
 
-        # Raw score calculation
+        # Raw score calculation - informational advisories do not penalize risk score
         raw_score = (
             counts["CRITICAL"] * 35.0 +
             counts["HIGH"] * 20.0 +
             counts["MEDIUM"] * 8.0 +
             counts["LOW"] * 3.0 +
-            counts["INFORMATIONAL"] * 0.5 +
             fuzz_failed * 15.0
         )
 
@@ -47,11 +46,13 @@ class RiskEngine:
         elif counts["MEDIUM"] > 0:
             score = max(25.0, min(54.9, raw_score))
             level = "MEDIUM"
-        elif counts["LOW"] > 0 or counts["INFORMATIONAL"] > 0:
+        elif counts["LOW"] > 0:
             score = max(5.0, min(24.9, raw_score))
             level = "LOW"
         else:
+            # Informational findings represent compiler/code-style suggestions and do not represent exploitable risk.
             score = 0.0
             level = "SECURE"
 
         return round(score, 1), level, counts
+

@@ -38,17 +38,37 @@ export const Scanner: React.FC<Props> = ({ activeScan, onScanCompleted }) => {
     if (!selectedContract) return;
 
     setIsScanning(true);
-    setProgress(10);
+    setProgress(15);
     setCurrentStep('Dispatching multi-engine scan jobs...');
     setError(null);
 
+    const stepTimer = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 88) return prev;
+        if (prev < 35) {
+          setCurrentStep('Running Slither AST & custom semantic detectors...');
+          return prev + 12;
+        } else if (prev < 65) {
+          setCurrentStep('Running Mythril symbolic analysis...');
+          return prev + 15;
+        } else if (prev < 85) {
+          setCurrentStep('Running Foundry invariant property fuzzing...');
+          return prev + 12;
+        }
+        setCurrentStep('Correlating findings and calculating risk score...');
+        return 90;
+      });
+    }, 700);
+
     try {
       const scan = await scannerService.startScan(selectedContract.id, selectedEngines);
+      clearInterval(stepTimer);
       setProgress(100);
-      setCurrentStep('Audit complete');
+      setCurrentStep('Audit completed successfully');
       setScanResult(scan);
       onScanCompleted(scan);
     } catch (err: any) {
+      clearInterval(stepTimer);
       setError(err.message || 'Scanning process failed');
     } finally {
       setIsScanning(false);
@@ -165,3 +185,4 @@ export const Scanner: React.FC<Props> = ({ activeScan, onScanCompleted }) => {
     </div>
   );
 };
+

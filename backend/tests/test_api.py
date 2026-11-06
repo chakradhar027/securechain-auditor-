@@ -57,3 +57,42 @@ async def test_upload_and_scan_pipeline():
         hist_res = await ac.get("/api/v1/history/summary")
         assert hist_res.status_code == 200
         assert hist_res.json()["total_scans"] >= 1
+
+@pytest.mark.asyncio
+async def test_security_malicious_upload_rejections():
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        # Test 1: Reject invalid extension (.py)
+        res_ext = await ac.post(
+            "/api/v1/upload/file",
+            files={"file": ("exploit.py", b"import os; os.system('echo hacked')", "text/plain")}
+        )
+        assert res_ext.status_code == 400
+        assert "Only .sol files are supported" in res_ext.json()["detail"]
+
+        # Test 2: Reject empty file
+        res_empty = await ac.post(
+            "/api/v1/upload/file",
+            files={"file": ("empty.sol", b"", "text/plain")}
+        )
+        assert res_empty.status_code == 400
+        assert "empty" in res_empty.json()["detail"].lower()
+
+        # Test 3: Reject non-Solidity arbitrary binary/text disguised as .sol
+        res_fake = await ac.post(
+            "/api/v1/upload/file",
+            files={"file": ("fake.sol", b"This is just random English text without any solidity code.", "text/plain")}
+        )
+        assert res_fake.status_code == 400
+        assert "valid solidity" in res_fake.json()["detail"].lower()
+
+        # Test 4: Path traversal filename is safely sanitized
+        res_traversal = await ac.post(
+            "/api/v1/upload/file",
+            files={"file": ("../../../../etc/passwd.sol", b"pragma solidity ^0.8.20; contract Safe { }", "text/plain")}
+        )
+        assert res_traversal.status_code == 201
+        contract_saved = res_traversal.json()
+        assert ".." not in contract_saved["filename"]
+        assert "passwd.sol" in contract_saved["filename"]
+

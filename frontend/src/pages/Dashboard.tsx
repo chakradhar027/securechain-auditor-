@@ -111,3 +111,4 @@ export const Dashboard: React.FC<Props> = ({ onNavigate, onSelectScan }) => {
     </div>
   );
 };
+

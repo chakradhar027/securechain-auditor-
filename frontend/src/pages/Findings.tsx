@@ -110,3 +110,4 @@ export const Findings: React.FC = () => {
     </div>
   );
 };
+

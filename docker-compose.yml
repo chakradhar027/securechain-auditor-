@@ -51,5 +51,15 @@ services:
     depends_on:
       - backend
 
+  mythril:
+    image: mythril/myth:latest
+    container_name: securechain_mythril
+    restart: "no"
+    volumes:
+      - ./contracts:/contracts
+      - ./storage:/storage
+    entrypoint: ["myth"]
+
 volumes:
   postgres_data:
+

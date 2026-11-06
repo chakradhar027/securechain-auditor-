@@ -14,13 +14,13 @@ router = APIRouter(prefix="/history", tags=["Scan History"])
 @router.get("/", response_model=List[ScanResponse])
 async def list_scans(
     skip: int = Query(0, ge=0),
-    limit: int = Query(50, ge=1, le=100),
+    limit: int = Query(100, ge=1, le=500),
     db: AsyncSession = Depends(get_db)
 ):
     """Retrieve audit scan history ordered by recency."""
     query = (
         select(Scan)
-        .options(selectinload(Scan.findings))
+        .options(selectinload(Scan.findings), selectinload(Scan.contract))
         .order_by(Scan.started_at.desc())
         .offset(skip)
         .limit(limit)
@@ -31,7 +31,11 @@ async def list_scans(
 @router.get("/summary", response_model=ScanSummary)
 async def get_dashboard_summary(db: AsyncSession = Depends(get_db)):
     """Aggregate statistics for executive security dashboard."""
-    query = select(Scan).options(selectinload(Scan.findings)).order_by(Scan.started_at.desc())
+    query = (
+        select(Scan)
+        .options(selectinload(Scan.findings), selectinload(Scan.contract))
+        .order_by(Scan.started_at.desc())
+    )
     res = await db.execute(query)
     scans = res.scalars().all()
 
@@ -83,3 +87,4 @@ async def compare_scans(
         "is_improved": scan_b.risk_score < scan_a.risk_score
     }
     return diff
+

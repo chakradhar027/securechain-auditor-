@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   LayoutDashboard,
   ScanLine,
@@ -9,6 +9,7 @@ import {
   Shield,
   Activity,
 } from 'lucide-react';
+import { scannerService } from '../../services/scannerService';
 
 interface Props {
   currentTab: string;
@@ -16,6 +17,35 @@ interface Props {
 }
 
 export const Sidebar: React.FC<Props> = ({ currentTab, onNavigate }) => {
+  const [engineStatuses, setEngineStatuses] = useState<Record<string, { label: string; isReady: boolean }>>({
+    custom: { label: 'Active', isReady: true },
+    slither: { label: 'Ready', isReady: true },
+    mythril: { label: 'Unverified (Docker)', isReady: false },
+    foundry: { label: 'Ready', isReady: true },
+  });
+
+  useEffect(() => {
+    scannerService.getAvailableEngines().then((engines) => {
+      const map: Record<string, { label: string; isReady: boolean }> = {};
+      engines.forEach((e) => {
+        if (e.id === 'mythril') {
+          const ready = e.status === 'READY';
+          map[e.id] = {
+            label: ready ? 'Ready' : 'Unverified (Docker)',
+            isReady: ready,
+          };
+        } else {
+          const ready = e.status === 'READY';
+          map[e.id] = {
+            label: ready ? (e.id === 'custom' ? 'Active' : 'Ready') : 'Unavailable',
+            isReady: ready,
+          };
+        }
+      });
+      setEngineStatuses((prev) => ({ ...prev, ...map }));
+    }).catch(() => {});
+  }, []);
+
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'scanner', label: 'Security Scanner', icon: ScanLine },
@@ -72,24 +102,33 @@ export const Sidebar: React.FC<Props> = ({ currentTab, onNavigate }) => {
           <span className="text-[11px]">Audit Engine Stack</span>
         </div>
         <div className="space-y-1 text-[11px] font-mono text-slate-400">
-          <div className="flex justify-between">
+          <div className="flex justify-between items-center">
             <span>Custom AST:</span>
-            <span className="text-emerald-400">Active</span>
+            <span className={engineStatuses.custom.isReady ? 'text-emerald-400' : 'text-red-400'}>
+              {engineStatuses.custom.label}
+            </span>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between items-center">
             <span>Slither Static:</span>
-            <span className="text-emerald-400">Ready</span>
+            <span className={engineStatuses.slither.isReady ? 'text-emerald-400' : 'text-red-400'}>
+              {engineStatuses.slither.label}
+            </span>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between items-center">
             <span>Mythril Symbolic:</span>
-            <span className="text-emerald-400">Ready</span>
+            <span className={engineStatuses.mythril.isReady ? 'text-emerald-400' : 'text-amber-400 font-sans text-[10px]'}>
+              {engineStatuses.mythril.label}
+            </span>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between items-center">
             <span>Foundry Fuzz:</span>
-            <span className="text-emerald-400">Ready</span>
+            <span className={engineStatuses.foundry.isReady ? 'text-emerald-400' : 'text-red-400'}>
+              {engineStatuses.foundry.label}
+            </span>
           </div>
         </div>
       </div>
     </aside>
   );
 };
+

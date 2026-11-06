@@ -57,3 +57,4 @@ def test_finding_correlation_deduplication():
     assert consolidated[0]["severity"] == "CRITICAL"
     assert "consolidated" in consolidated[0]["engine"]
     assert consolidated[0]["confidence"] == "HIGH"
+

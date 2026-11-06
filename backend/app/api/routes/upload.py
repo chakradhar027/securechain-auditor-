@@ -69,3 +69,4 @@ async def upload_contract_code(
     await db.refresh(contract)
 
     return contract
+

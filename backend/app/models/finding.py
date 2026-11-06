@@ -27,3 +27,4 @@ class Finding(Base):
     cvss_score = Column(Float, nullable=True, default=0.0)
 
     scan = relationship("Scan", back_populates="findings")
+

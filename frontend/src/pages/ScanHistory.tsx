@@ -64,7 +64,7 @@ export const ScanHistory: React.FC<Props> = ({ onSelectScan }) => {
               <option value="">Select Audit A</option>
               {scans.map((s) => (
                 <option key={s.id} value={s.id}>
-                  SCA-{s.id.toString().padStart(6, '0')} - Contract #{s.contract_id} ({s.risk_level})
+                  SCA-{s.id.toString().padStart(6, '0')} - {s.contract_name || `Contract #${s.contract_id}`} ({s.risk_level})
                 </option>
               ))}
             </select>
@@ -80,7 +80,7 @@ export const ScanHistory: React.FC<Props> = ({ onSelectScan }) => {
               <option value="">Select Audit B</option>
               {scans.map((s) => (
                 <option key={s.id} value={s.id}>
-                  SCA-{s.id.toString().padStart(6, '0')} - Contract #{s.contract_id} ({s.risk_level})
+                  SCA-{s.id.toString().padStart(6, '0')} - {s.contract_name || `Contract #${s.contract_id}`} ({s.risk_level})
                 </option>
               ))}
             </select>
@@ -183,7 +183,7 @@ export const ScanHistory: React.FC<Props> = ({ onSelectScan }) => {
                       SCA-{scan.id.toString().padStart(6, '0')}
                     </td>
                     <td className="py-3 px-3 font-semibold text-slate-200">
-                      Contract #{scan.contract_id}
+                      {scan.contract_name || `Contract #${scan.contract_id}`}
                     </td>
                     <td className="py-3 px-3">
                       <SeverityBadge severity={scan.risk_level} size="sm" />
@@ -223,3 +223,4 @@ export const ScanHistory: React.FC<Props> = ({ onSelectScan }) => {
     </div>
   );
 };
+

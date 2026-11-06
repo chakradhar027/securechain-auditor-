@@ -66,3 +66,4 @@ async def fetch_on_chain_contract(
     await db.refresh(contract)
 
     return contract
+

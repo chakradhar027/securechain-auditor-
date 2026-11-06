@@ -25,3 +25,4 @@ def max_severity(severities: list[str]) -> str:
     if not severities:
         return "INFORMATIONAL"
     return max(severities, key=lambda s: SEVERITY_ORDER.get(s.upper(), 0))
+

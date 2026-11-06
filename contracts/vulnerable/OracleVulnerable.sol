@@ -29,3 +29,4 @@ contract OracleVulnerable {
         return (tokenAmount * price) / 1e18;
     }
 }
+

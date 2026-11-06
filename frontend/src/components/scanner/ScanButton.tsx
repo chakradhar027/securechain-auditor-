@@ -19,7 +19,7 @@ export const ScanButton: React.FC<Props> = ({
   const engineOptions = [
     { id: 'custom', name: 'Custom Detectors', icon: Shield, desc: 'Reentrancy, Access Control, Unchecked Calls, Oracle Manipulation' },
     { id: 'slither', name: 'Slither Static', icon: Activity, desc: 'AST & CFG static analysis' },
-    { id: 'mythril', name: 'Mythril Symbolic', icon: Cpu, desc: 'EVM symbolic path constraint solving' },
+    { id: 'mythril', name: 'Mythril Symbolic', icon: Cpu, desc: 'EVM symbolic path constraint solving (Requires Docker)' },
     { id: 'foundry', name: 'Foundry Fuzzing', icon: Zap, desc: 'Automated 256-run dynamic invariant fuzz tests' },
   ];
 
@@ -81,3 +81,4 @@ export const ScanButton: React.FC<Props> = ({
     </div>
   );
 };
+

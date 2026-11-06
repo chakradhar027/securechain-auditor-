@@ -13,8 +13,10 @@ class ScanCreateRequest(BaseModel):
 class ScanResponse(BaseModel):
     id: int
     contract_id: int
+    contract_name: Optional[str] = None
     status: str
     engines_used: List[str]
+    engines_requested: Optional[List[str]] = None
     risk_score: float
     risk_level: str
     total_vulnerabilities: int
