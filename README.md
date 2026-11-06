@@ -1,173 +1,157 @@
+[README.md](https://github.com/user-attachments/files/34474905/README.md)
 # SecureChain Auditor
 
-> **Intelligent Multi-Engine Smart Contract Vulnerability Detection and Risk Assessment Platform**
+**Intelligent Multi-Engine Smart Contract Vulnerability Detection & Risk Assessment Platform**
 
-SecureChain Auditor is an enterprise-grade automated security auditing platform for Solidity smart contracts. It combines multi-engine static analysis, symbolic execution, and property-based dynamic fuzz testing with custom vulnerability detectors to produce publication-ready PDF audit reports, interactive code evidence, and calibrated risk scores.
+SecureChain Auditor is a web-based security auditing platform for Solidity smart contracts. It brings together custom vulnerability detectors, Slither static analysis, and Foundry property-based fuzz testing in a single workflow. Findings are normalized and correlated, assigned severity and risk scores, stored in audit history, and presented with source-code evidence, remediation guidance, and downloadable PDF reports.
 
----
+> **Research and portfolio project.** Automated analysis is not a substitute for a professional manual audit or formal verification. Results depend on the enabled engines, detector coverage, and test properties supplied for the contract.
 
-## 1. Problem Statement
-Smart contracts manage billions of dollars in decentralized finance (DeFi) protocols and digital assets on immutable blockchains. A single logic flaw, reentrancy bug, or price oracle manipulation can lead to catastrophic, irreversible financial loss. Traditional security audits are manual, slow, and expensive. Conversely, existing automated tools often run in isolation, generate excessive false positives from benign compiler warnings, or produce non-actionable outputs that fail to verify real-world exploitability.
+## Project at a glance
 
----
+- **Frontend:** React, TypeScript, Vite, Tailwind CSS
+- **Backend:** Python, FastAPI, Uvicorn, Pydantic
+- **Database:** SQLite with asynchronous SQLAlchemy
+- **Analysis:** Custom Python/AST detectors, Slither, Foundry Forge
+- **Reporting:** ReportLab PDF generation
+- **Optional engine:** Mythril; live execution is currently unverified and depends on a working Docker/native setup
 
-## 2. Project Objectives
-- **Multi-Engine Orchestration**: Unify diverse static analyzers, symbolic execution engines, and dynamic fuzzing tools into a coherent, automated pipeline.
-- **Precision & Low False Positives**: Differentiate true exploitable vulnerabilities from informational code-hygiene notices to ensure patched contracts are not falsely penalized.
-- **Dynamic Exploit Verification**: Validate security properties dynamically using Foundry Forge invariant fuzzing to discover concrete exploit counterexamples.
-- **Automated Formal Reporting**: Generate formal, cryptographically verified PDF audit reports with line-level code evidence and actionable remediation steps.
-- **Audit Tracking & Diffing**: Provide comprehensive historical tracking with version-to-version vulnerability delta analysis.
+## Screenshots
 
----
+### Security overview dashboard
+![SecureChain Auditor dashboard](screenshots/dashboard.png)
 
-## 3. Key Features
-- **Multi-Engine Scanning Pipeline**: Orchestrates Slither, Mythril, Foundry, and custom AST security detectors.
-- **Specialized Vulnerability Detectors**: High-precision AST and semantic detectors for Reentrancy (CEI violations), Access Control flaws, Unchecked Calls, and Oracle Manipulation.
-- **Property-Based Invariant Fuzzing**: Automated 256-run Foundry fuzz suites evaluating solvency invariants, caller permissions, and counterexample extraction.
-- **Finding Normalization & Correlation**: De-duplicates overlapping findings across engines and corroborates multi-scanner detections.
-- **Calibrated Risk Engine**: Calculates a 0–100 CVSS-aligned risk score without penalizing contracts for informational compiler warnings.
-- **Interactive Code Evidence**: Displays syntax-highlighted code snippets, line numbers, exploitability context, and remediation guidance.
-- **Formal PDF Audit Reports**: Generates formal, publication-ready PDF audit certificates with ReportLab.
-- **Audit Comparison Diff**: Compares baseline vs. patched audit iterations with automated risk delta calculations.
-- **Blockchain Explorer Integration**: Imports verified Solidity source code directly from Etherscan, BSCScan, and PolygonScan.
+### Multi-engine contract scanner
+![Contract scanner](screenshots/scanner.png)
 
----
+### Vulnerability findings catalog
+![Vulnerability findings catalog](screenshots/findings-catalog.png)
 
-## 4. Technology Stack
+### Audit history and comparisons
+![Audit history](screenshots/scan-history.png)
+
+### Foundry invariant fuzz testing
+![Foundry fuzz testing](screenshots/foundry-fuzz-testing.png)
+
+## Key capabilities
+
+### Multi-engine scanning
+- Upload a Solidity `.sol` file or paste source code.
+- Select available analysis engines for a scan.
+- Run custom detectors and Slither static analysis.
+- Run Foundry fuzz and invariant tests when the required test harness is available.
+- The interface also exposes on-chain address submission; explorer retrieval depends on the configured integration and supported explorer.
+
+### Custom vulnerability detection
+The custom detector categories documented for this project include:
+- **Reentrancy:** checks-effects-interactions ordering and related external-call patterns.
+- **Access control:** sensitive operations without appropriate authorization checks.
+- **Unchecked external calls:** low-level call return-value handling.
+- **Oracle manipulation:** potentially unsafe reliance on manipulatable AMM spot-reserve or oracle data.
+
+Detector output is heuristic evidence and should be reviewed in context.
+
+### Finding correlation and risk assessment
+- Normalize results from different analysis engines.
+- Identify overlapping findings and reduce duplicate reporting.
+- Preserve severity, confidence, engine, source location, and vulnerability identifiers where available.
+- Calculate a project-defined risk score from 0–100.
+- Keep informational code-hygiene advisories distinct from active vulnerabilities.
+
+The risk score is an automated prioritization aid, not proof that a contract is secure or exploitable.
+
+### Foundry fuzz and invariant testing
+Foundry Forge can execute property-based tests with a configured 256-run fuzz setting. The project test properties cover examples such as solvency, caller authorization, zero-value handling, and arithmetic bounds. When an invariant fails, the test output can provide a counterexample trace for investigation.
+
+The results shown in the UI depend on the selected contract and configured test harness; a passing test suite does not prove the absence of vulnerabilities.
+
+### Audit history and PDF reports
+- Persist scan history and findings in the configured database.
+- Compare baseline and patched audit runs.
+- Review changes in risk scores and finding counts.
+- Generate PDF reports with contract metadata, executive risk assessment, findings, source evidence, and remediation recommendations.
+- Include fuzz verification results when available.
+
+## Architecture
+
+```text
+React + TypeScript + Vite
+          |
+          v
+     FastAPI REST API
+          |
+          v
+ Scanner orchestration layer
+   |          |          |
+   v          v          v
+ Custom     Slither    Foundry
+ detectors  static     fuzz/invariant
+   |          |          |
+   +----------+----------+
+              |
+              v
+   Finding normalization
+       and correlation
+              |
+              v
+      Risk assessment
+              |
+       +------+------+
+       |             |
+       v             v
+ SQLAlchemy DB    PDF reports
+       |
+       v
+ Scan history and audit comparison
+```
+
+## Technology stack
+
 | Layer | Technologies |
-| :--- | :--- |
-| **Frontend** | React 18, TypeScript, Tailwind CSS, Lucide Icons, Vite |
-| **Backend** | Python 3.11 / 3.13, FastAPI, Uvicorn, Pydantic V2 |
-| **Database** | SQLite / PostgreSQL (Async SQLAlchemy 2.0 + aiosqlite / asyncpg) |
-| **Static & Symbolic Analysis** | Slither 0.10.x, Mythril (Docker / Native EVM solver), Custom AST / Semantic Engine |
-| **Dynamic Testing** | Foundry (`forge test --fuzz-runs 256`) & Dynamic Invariant Fuzzer |
-| **PDF Reporting** | ReportLab 4.x |
-| **DevOps & Containers** | Docker, Docker Compose |
+|---|---|
+| Frontend | React, TypeScript, Vite, Tailwind CSS, Lucide icons |
+| Backend | Python, FastAPI, Uvicorn, Pydantic |
+| Database | SQLite, SQLAlchemy async ORM |
+| Static analysis | Slither, custom AST/semantic detectors |
+| Dynamic testing | Foundry Forge fuzz and invariant tests |
+| Symbolic analysis | Mythril integration is present in the design/UI; live execution remains unverified |
+| PDF reports | ReportLab |
+| Development tools | Git, GitHub, Docker (optional for Mythril setup) |
 
----
+## Local setup
 
-## 5. System Architecture
-```
-[ User Browser (React 18 + TypeScript + Vite) ]
-                     │
-                     ▼
-[ FastAPI Backend /api/v1 (Python 3.11 / 3.13) ]
-   ├── [ File & Explorer Ingestion ] ──> /backend/storage/uploads/
-   ├── [ Scanner Manager Orchestrator ]
-   │      ├── Slither Static Engine
-   │      ├── Mythril Symbolic Engine (Docker / Native)
-   │      ├── Foundry Invariant Fuzzer (forge test 256 runs)
-   │      └── Custom AST Detectors (CEI, Auth, Call, Oracle)
-   ├── [ Finding Normalizer & Correlator ]
-   ├── [ CVSS & Calibrated Risk Assessment Engine ]
-   ├── [ ReportLab PDF Audit Generator ] ──> /backend/storage/reports/
-   └── [ Canonical SQLAlchemy Database ] ──> /backend/storage/securechain.db
-```
+### Prerequisites
 
----
+- Python 3.11 or 3.13
+- Node.js 18+ and npm
+- Slither installed in the Python environment
+- Foundry (`forge`) installed and available on `PATH`
+- Docker only if using the containerized Mythril configuration
 
-## 6. How the Multi-Engine Pipeline Works
-1. **Ingestion & Validation**: Uploaded Solidity files or direct pastes are validated for syntax and compiler pragma versions, then stored in canonical storage with sanitized filenames.
-2. **Concurrent Execution**: `ScannerManager` executes enabled analyzers asynchronously. Custom detectors perform AST pattern matching, Slither analyzes control-flow graphs, and Foundry executes invariant property tests.
-3. **Normalization**: Diverse tool outputs are parsed into a uniform schema with standardized categories and line numbers.
-4. **Correlation & Deduplication**: Findings targeting identical functions or overlapping line ranges (within $\pm 3$ lines) are merged, with corroboration increasing confidence.
-5. **Calibrated Scoring**: The risk engine evaluates active vulnerabilities and Foundry failures, while preserving informational advisories with zero score penalty.
-6. **Report Generation**: Publication-ready PDF certificates and interactive web views are generated immediately.
+### 1. Clone the repository
 
----
-
-## 7. Vulnerability Categories Detected
-- **Reentrancy (SWC-107)**: Checks-Effects-Interactions (CEI) violations, state updates occurring after raw external calls (`call.value`), and missing reentrancy guards.
-- **Access Control (SWC-105 / SWC-106 / SWC-115)**: Sensitive administrative functions missing `onlyOwner`, dangerous `tx.origin` authentication, and unprotected `selfdestruct`.
-- **Unchecked External Calls (SWC-104)**: Ignored boolean return values from `.call`, `.send`, or `.delegatecall`, and non-standard ERC-20 transfers.
-- **Oracle Manipulation**: Spot reserve price derivations from AMM liquidity pools (`getReserves()`) vulnerable to flash loan price distortions, and unvalidated Chainlink oracle feeds.
-
----
-
-## 8. Risk Assessment Methodology
-The risk engine calculates a normalized 0–100 score based on finding severity and dynamic test results:
-- **Base Severity Weights**: `CRITICAL` (35 pts), `HIGH` (20 pts), `MEDIUM` (8 pts), `LOW` (3 pts), `Foundry Invariant Failure` (15 pts).
-- **Minimum Posture Thresholds**: A contract with any confirmed Critical issue automatically scores $\ge 80.0$ (`CRITICAL`), High $\ge 55.0$ (`HIGH`), Medium $\ge 25.0$ (`MEDIUM`), Low $\ge 5.0$ (`LOW`).
-- **Informational Hygiene Zero-Weight**: Compiler version notices, naming conventions, and verified safe low-level calls carry 0.0 weight. Secure contracts receive a score of **0.0 (SECURE)**.
-
----
-
-## 9. Foundry Fuzz Testing
-Foundry Forge runs automated invariant fuzzing (`--fuzz-runs 256`) against parameterized test contracts in `contracts/test/SecurityTest.t.sol`:
-- **Solvency Invariants**: Verifies vault assets equal or exceed user liabilities under randomized deposit/withdraw sequences.
-- **Access Invariants**: Asserts unauthorized addresses cannot drain funds or trigger selfdestruct.
-- **Counterexample Generation**: When an invariant fails, Forge extracts the exact randomized inputs, caller addresses, and calldata, which are rendered directly in the user interface.
-
----
-
-## 10. Database and Scan History
-All contracts, scan runs, findings, and fuzz details are persisted using asynchronous SQLAlchemy 2.0. Database paths are canonically anchored to `backend/storage/securechain.db`, ensuring complete directory independence. Scan history allows side-by-side comparison of baseline vs. fixed contracts to verify vulnerability remediation.
-
----
-
-## 11. PDF Audit Report Generation
-Using ReportLab, the platform automatically compiles comprehensive PDF audit reports including:
-- Cryptographic report metadata and audit identifier (`SCA-XXXXXX`).
-- Contract details (name, compiler version, sha256 fingerprint).
-- Executive risk score dial and severity summary table.
-- De-duplicated findings with CVSS severity, line ranges, highlighted source code evidence, and remediation advice.
-- Foundry fuzz testing invariant verification status.
-
----
-
-## 12. Installation Requirements
-- **Python**: 3.11 or 3.13
-- **Node.js**: 18+ and `npm`
-- **Solidity Tooling**:
-  - `slither`: Installed via python virtual environment
-  - `foundry` (`forge`): Installed via `foundryup`
-- **Optional**: Docker (for containerized Mythril symbolic execution)
-
----
-
-## 13. Backend Setup Instructions
 ```bash
-# Clone the repository
-git clone https://github.com/your-username/securechain-auditor.git
-cd securechain-auditor
+git clone https://github.com/chakradhar027/securechain-auditor-.git
+cd securechain-auditor-
+```
 
-# Create and activate Python virtual environment
+### 2. Configure the backend
+
+```bash
 python3 -m venv .venv
 source .venv/bin/activate
-
-# Install backend dependencies
 pip install -r backend/requirements.txt
-
-# Start backend server
-./scripts/start_backend.sh
 ```
-Backend API will be running at `http://localhost:8000`.
 
----
+### 3. Configure environment variables
 
-## 14. Frontend Setup Instructions
-```bash
-# From repository root
-cd frontend
-
-# Install Node dependencies
-npm install
-
-# Start Vite development server
-cd ..
-./scripts/start_frontend.sh
-```
-Frontend web application will be accessible at `http://localhost:5173`.
-
----
-
-## 15. Environment Configuration
-Copy `.env.example` to `.env`:
 ```bash
 cp .env.example .env
 ```
-Key configuration parameters:
-```env
+
+Review the settings in `.env` for your local environment. Example values documented by the project:
+
+```dotenv
 APP_NAME="SecureChain Auditor"
 APP_ENV=development
 PORT=8000
@@ -178,95 +162,92 @@ UPLOADS_DIR=./backend/storage/uploads
 REPORTS_DIR=./backend/storage/reports
 ```
 
----
+Do not commit secrets, local databases, uploaded contracts, generated reports, or environment files.
 
-## 16. API Documentation
-Key REST endpoints:
-- `GET /api/v1/health`: System health status.
-- `POST /api/v1/upload/file`: Upload Solidity source file.
-- `POST /api/v1/scanner/start`: Execute multi-engine audit.
-- `GET /api/v1/findings/?scan_id={id}`: Retrieve audit findings.
-- `GET /api/v1/history/`: List completed audit history.
-- `GET /api/v1/history/compare`: Compute delta between two audits.
-- `GET /api/v1/reports/download/{scan_id}`: Download PDF audit certificate.
+### 4. Start the backend
 
-Interactive Swagger UI: `http://localhost:8000/docs`.
-
----
-
-## 17. Example Usage
-### Upload & Scan via cURL:
 ```bash
-# 1. Upload contract
-curl -X POST http://localhost:8000/api/v1/upload/file \
-  -F "file=@contracts/vulnerable/ReentrancyVulnerable.sol"
-
-# 2. Trigger scan
-curl -X POST http://localhost:8000/api/v1/scanner/start \
-  -H "Content-Type: application/json" \
-  -d '{"contract_id": 1, "engines": ["custom", "slither", "foundry"]}'
-
-# 3. Download report
-curl -O http://localhost:8000/api/v1/reports/download/1
+./scripts/start_backend.sh
 ```
 
----
+The API is expected at `http://localhost:8000`.
 
-## 18. Testing Instructions
-Execute the backend test suite:
+### 5. Install and start the frontend
+
+```bash
+cd frontend
+npm install
+cd ..
+./scripts/start_frontend.sh
+```
+
+The Vite application is expected at `http://localhost:5173`.
+
+### 6. API documentation
+
+When the backend is running, open:
+
+- Swagger UI: `http://localhost:8000/docs`
+- Health endpoint: `GET /api/v1/health`
+
+## API overview
+
+The project documentation identifies these API routes:
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| `GET` | `/api/v1/health` | Backend health |
+| `POST` | `/api/v1/upload/file` | Upload Solidity source |
+| `POST` | `/api/v1/scanner/start` | Start a multi-engine scan |
+| `GET` | `/api/v1/findings/?scan_id={id}` | Retrieve findings |
+| `GET` | `/api/v1/history/` | List scan history |
+| `GET` | `/api/v1/history/compare` | Compare two audits |
+| `GET` | `/api/v1/reports/download/{scan_id}` | Download a PDF report |
+
+Check the running Swagger documentation for the exact request schemas and current route behavior.
+
+## Testing
+
+The project documentation provides the following verification commands:
+
 ```bash
 ./.venv/bin/pytest backend/tests/ -v
-```
-Build frontend production bundle:
-```bash
 cd frontend && npm run build && cd ..
-```
-Execute end-to-end user workflow test:
-```bash
 ./.venv/bin/python scripts/test_complete_user_workflow.py
-```
-Execute reliability and security audit:
-```bash
 ./.venv/bin/python scripts/test_reliability_and_security.py
-```
-Run 72-contract benchmark suite:
-```bash
 ./.venv/bin/python benchmark/benchmark_runner.py
 ```
 
----
+Reported project verification includes backend tests, a successful frontend production build, end-to-end workflow checks, vulnerable/fixed regression scans, and PDF report checks. Benchmark figures apply only to the evaluated test set and should not be interpreted as guaranteed accuracy on unseen contracts.
 
-## 19. Screenshots
-Screenshots of the running web application:
-- **Executive Dashboard**: Telemetry overview, severity distribution pie charts, and recent audit activity.
-- **Security Scanner**: Interactive file upload, engine toggle, and live progress bar.
-- **Findings Catalog**: Expandable finding cards with syntax-highlighted code evidence.
-- **Foundry Invariant Fuzzing**: Invariant execution table and counterexample traces.
-- **PDF Audit Report**: Publication-ready audit report preview.
+## Known limitations
 
-*(Place real screenshots in `screenshots/` directory when presenting).*
+- **Mythril:** Live execution is currently unverified in the reported environment. The UI may show the engine as unverified when Docker or its required runtime is unavailable; do not count it as an executed engine unless a scan confirms execution.
+- **Fuzzing scope:** Invariant testing depends on suitable properties and test harnesses. Arbitrary protocols may require custom Foundry tests.
+- **Detection coverage:** Static and custom detectors can miss issues or produce findings that require manual triage.
+- **Benchmark scope:** Results from the project's benchmark are limited to that dataset and do not establish universal detection accuracy.
+- **On-chain source retrieval:** Explorer integrations require valid configuration and supported verified-source endpoints.
 
----
+## Security note
 
-## 20. Limitations
-- **Mythril Execution**: Under Python 3.13, native Mythril dependencies require Docker. When Docker is not running, Mythril is explicitly flagged as unverified and excluded from executed engines.
-- **Fuzzing Scope**: Invariant fuzzing requires predefined test properties in `SecurityTest.t.sol`. Arbitrary custom protocols require tailored property definitions.
-- **Benchmark Scope**: The 72-contract benchmark demonstrates consistency within the evaluated testbed and does not guarantee 100% detection on unseen mainnet contracts.
+Only analyze contracts you are authorized to inspect. Treat uploaded Solidity source and generated findings as untrusted input. Run analysis of untrusted projects in an appropriately isolated environment. Before production use, review upload handling, subprocess isolation, resource limits, authentication, authorization, and deployment configuration.
 
----
+## Future improvements
 
-## 21. Future Enhancements
-- Integration of EVM bytecode decompiler for unverified on-chain bytecode analysis.
-- Support for automated generation of Foundry invariant harnesses using LLM code synthesis.
-- Multi-contract protocol simulation supporting cross-contract call traces and flash loan environments.
-- CI/CD GitHub Action integration for automated PR security checks.
+- Verify Mythril execution in a reproducible Docker environment.
+- Expand evaluation with independently sourced smart contracts.
+- Improve detector precision and false-positive triage.
+- Add isolated execution environments for untrusted source.
+- Expand multi-contract and cross-contract analysis.
+- Add CI/CD integration for pull-request security checks.
+- Deploy the platform with authentication and role-based access controls.
 
----
+## Author
 
-## 22. Author & Academic Context
-Developed as an advanced smart contract security research and engineering project demonstrating multi-engine static and dynamic vulnerability analysis for Ethereum smart contracts.
+Developed as an advanced blockchain and cybersecurity portfolio/research project.
 
----
+**GitHub:** [chakradhar027/securechain-auditor-](https://github.com/chakradhar027/securechain-auditor-)
 
-## 23. License
-MIT License.
+## License
+
+The supplied project notes specify the MIT License. Include the repository's `LICENSE` file to make that license effective.
