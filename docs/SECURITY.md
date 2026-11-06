@@ -65,3 +65,4 @@ SecureChain Auditor processes untrusted Solidity source code uploaded by externa
 ## 6. Audit & Exploitation Disclaimer
 
 SecureChain Auditor is a vulnerability detection tool designed to identify common security vulnerabilities and code weaknesses. It does **not** guarantee that a contract is completely free of defects or economic vulnerabilities. Critical decentralized applications should always undergo comprehensive third-party human security audits before deployment.
+

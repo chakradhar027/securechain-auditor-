@@ -83,3 +83,4 @@ This document provides verified resume descriptions, talking points, elevator pi
 > 1. **Symbolic Execution Environment**: Mythril requires either native Python bytecode support or a running Docker daemon. On environments where Docker is unavailable (such as Python 3.13 without Docker), the platform explicitly flags Mythril as unverified and excludes it from the executed engines list rather than substituting unverified heuristics.
 > 2. **Foundry Invariant Coverage**: Dynamic fuzzing requires parameterized invariant harnesses. While our test suite covers core DeFi and token patterns, novel arbitrary protocols require custom property specifications.
 > 3. **Benchmark Scope**: While our 72-contract benchmark achieved 100% precision and recall on its curated dataset, synthetic and selected public testbeds do not encompass the full complexity of multi-contract composability or economic attack vectors in arbitrary live mainnet protocols."
+

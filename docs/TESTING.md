@@ -118,3 +118,4 @@ Runs automated benchmark evaluation over 72 test contracts (60 synthetic paramet
 ```
 
 Ground truth is strictly isolated in `benchmark/expected_findings/benchmark_ground_truth.json` and is never provided to the scanning engines during execution.
+

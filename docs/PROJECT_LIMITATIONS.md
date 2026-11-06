@@ -43,3 +43,4 @@ This document provides a transparent, technically rigorous assessment of the des
 ## 5. Security Tooling vs. Human Auditing
 
 SecureChain Auditor is designed as an automated developer-assistive tool and continuous security linting platform. It is **not** a replacement for formal verification and third-party human security audits by certified smart contract auditing firms.
+
